@@ -14,7 +14,7 @@
 	margin: auto;
 	width: 50%;
 	height: 50px;
-	border-radius: 50px;
+	border-radius: 10px;
 	text-align: center;
 	color: black;
 	background: whitesmoke;
@@ -22,10 +22,11 @@
 
 .button
 {
-	border-radius: 50px;
+	margin: auto;
 	height: 50px;
 	width: 50%;
-	background: lime;
+	border-radius: 10px;
+	background-image: linear-gradient(to right, rgba(0, 2000, 0, 0.3), rgba(0,200,0,1));
 	color: black;
 	box-shadow: 50px;
 }
