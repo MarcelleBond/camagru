@@ -7,7 +7,7 @@
         $dbh->exec("CREATE DATABASE IF NOT EXISTS $DB_NAME;")
         or die(print_r($dbh->errorInfo(), true));
         $dbh->exec("CREATE TABLE `camagru`.`users`(
-            `id` INT NOT NULL AUTO_INCREMENT,
+            `user_id` INT NOT NULL AUTO_INCREMENT,
             `username` VARCHAR(20) NOT NULL,
             `password` VARCHAR(64) NOT NULL,
             `salt` VARCHAR(32) NOT NULL,
@@ -17,18 +17,18 @@
             PRIMARY KEY(`id`)
         )");
         $dbh->exec("CREATE TABLE `camagru`.`group`(
-            `id` INT NOT NULL AUTO_INCREMENT,
-            `name` VARCHAR(20) NOT NULL,
+            `group_id` INT NOT NULL AUTO_INCREMENT,
+            `group_name` VARCHAR(20) NOT NULL,
             `permissions` TEXT NOT NULL,
             PRIMARY KEY(`id`)
         )");
         $dbh->exec("CREATE TABLE `camagru`.`users_session`(
-            `id` INT NOT NULL AUTO_INCREMENT,
+            `session_id` INT NOT NULL AUTO_INCREMENT,
             `user_id` INT NOT NULL,
             `hash` VARCHAR(50) NOT NULL,
             PRIMARY KEY(`id`)
         )");
-        $dbh->exec("INSERT INTO `camagru`.`group`(`id`, `name`, `permissions`)
+        $dbh->exec("INSERT INTO `camagru`.`group`(`group_id`, `group_name`, `permissions`)
             VALUES(NULL, 'Standard user', '')");
         $dbh->exec("INSERT INTO `camagru`.`group`(`id`, `name`, `permissions`)
         VALUES(
