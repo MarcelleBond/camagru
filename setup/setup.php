@@ -14,23 +14,23 @@
             `name` VARCHAR(50) NOT NULL,
             `joined` DATETIME NOT NULL,
             `group` INT NOT NULL,
-            PRIMARY KEY(`id`)
+            PRIMARY KEY(`user_id`)
         )");
         $dbh->exec("CREATE TABLE `camagru`.`group`(
             `group_id` INT NOT NULL AUTO_INCREMENT,
             `group_name` VARCHAR(20) NOT NULL,
             `permissions` TEXT NOT NULL,
-            PRIMARY KEY(`id`)
+            PRIMARY KEY(`group_id`)
         )");
         $dbh->exec("CREATE TABLE `camagru`.`users_session`(
             `session_id` INT NOT NULL AUTO_INCREMENT,
             `user_id` INT NOT NULL,
             `hash` VARCHAR(50) NOT NULL,
-            PRIMARY KEY(`id`)
+            PRIMARY KEY(`session_id`)
         )");
         $dbh->exec("INSERT INTO `camagru`.`group`(`group_id`, `group_name`, `permissions`)
             VALUES(NULL, 'Standard user', '')");
-        $dbh->exec("INSERT INTO `camagru`.`group`(`id`, `name`, `permissions`)
+        $dbh->exec("INSERT INTO `camagru`.`group`(`group_id`, `group_name`, `permissions`)
         VALUES(
             NULL,
             'Administrator',
