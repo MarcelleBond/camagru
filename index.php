@@ -1,5 +1,15 @@
 <?php
 	require_once 'core/init.php';
 
-	 DB::getInstance()->query("SELECT username FROM users WHERE username = ?", array('alex'));
+	$user = DB::getInstance()->insert('users',array(
+		'username' => 'Dale',
+		'password' => '123456',
+		'salt' => 'salt'));
+
+	if ($user) {
+		echo "yay";
+	} else {
+		echo "i fucked up";
+	}
+
 ?>
