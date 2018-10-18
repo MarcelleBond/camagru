@@ -6,7 +6,7 @@
 		'mysql' => array(
 			'host' => 'localhost',
 			'user' => 'root',
-			'password' => '123456',
+			'password' => '',
 			'db' => "camagru"
 		),
 		'remember' => array(
@@ -15,6 +15,7 @@
 		),
 		'session' => array(
 			'session_name' => 'user',
+			'token_name' => 'token',
 		),
 	);
 

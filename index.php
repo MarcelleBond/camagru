@@ -1,7 +1,7 @@
 <?php
-	require_once 'core/init.php';
+ 	require_once 'core/init.php';
 
-	$user = DB::getInstance()->insert('users',array(
+/*	$user = DB::getInstance()->insert('users',array(
 		'username' => 'Dale',
 		'password' => '123456',
 		'salt' => 'salt'));
@@ -10,6 +10,11 @@
 		echo "yay";
 	} else {
 		echo "i fucked up";
+	} */
+
+	if(session::exists("success"))
+	{
+		echo session::flash('success');
 	}
 
 ?>
