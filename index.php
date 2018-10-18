@@ -12,9 +12,9 @@
 		echo "i fucked up";
 	} */
 
-	if(session::exists("success"))
+	if(session::exists("home"))
 	{
-		echo session::flash('success');
+		echo '<p>' . session::flash('home') .'<p>';
 	}
 
 ?>

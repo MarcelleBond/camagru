@@ -1,0 +1,23 @@
+<?php
+
+	require_once "core/init.php";
+
+	class hash
+	{
+		public static function make($string, $salt = '')
+		{
+			return hash('whirlpool', $string . $salt);
+		}
+		
+		public static function salt($length)
+		{
+			return random_bytes($length);
+		}
+		
+		public static function unique()
+		{
+			return self::make(uniqid());
+		}
+	}
+
+?>

@@ -11,13 +11,13 @@
 					'max' => 20,
 					'unique' => 'users' 
 				),
-				'password' => array(
+				'passwd' => array(
 					'required' => true,
 					'min' => 6,
 				),
-				'password_again' => array(
+				'passwd_again' => array(
 					'required' => true,
-					'matches' => 'password'
+					'matches' => 'passwd'
 				),
 				'name' => array(
 					'required' => true,
@@ -28,8 +28,27 @@
 
 			if ($validate->passed())
 			{
-				session::flash('success', 'You regestered successfully!');
-				header('Location: index.php');
+				$user = new user();
+
+				$salt = hash::salt(32);
+				try
+				{
+					$user->create(array(
+						'username' => input::get('username'),
+						'password' => hash::make(input::get('passwd'), $salt),
+						'salt' => $salt,
+						'name' => input::get('name'),
+						'joined' => date('Y-m-d H:i:s'),
+						'group' => 1
+					));
+
+					session::flash('home', 'you have been regestered and can login');
+					redirect::to('index.php');
+				}
+				catch(Exception $e)
+				{
+					die ($e->getMessage());
+				}
 			}
 			else
 			{
@@ -55,8 +74,8 @@
 	<div class="login_box">
 		<form action="" method="post" autocomplete="off">
 			<div class="field"><input id="username" type="text" name="username" placeholder="Username" value="<?php echo escape(Input::get('username'));?>"></div>
-			<div><input id="password" type="password" name="password" placeholder="Password"></div>
-			<div><input id="password_again" type="password" name="password_again" placeholder="Password_again"></div>
+			<div><input id="passwd" type="password" name="passwd" placeholder="Password"></div>
+			<div><input id="passwd_again" type="password" name="passwd_again" placeholder="Password_again"></div>
 			<div><input id="name" type="text" name="name" placeholder="name"value="<?php echo escape(Input::get('name'));?>"></div>
 			<input type="hidden" name="token" value="<?php echo token::generate(); ?>" >
 			<div><input type="submit" value="register"></div>
