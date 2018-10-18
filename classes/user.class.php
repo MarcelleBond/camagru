@@ -16,6 +16,19 @@
 			if(!$this->_db->insert('users', $fields))
 				throw new Exception("problem creating user");
 		}
+
+		public function find($user = null)
+		{
+			if ($user) {
+				$field = (is_numeric($user)) ? 'id' : 'username';
+			}
+		}
+
+		public function login($username = null, $password = null)
+		{
+			$user = $this->find($username);
+			return false;
+		}
 	}
 
 ?>
