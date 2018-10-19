@@ -8,12 +8,12 @@
 			$validate = new validate();
 			$validation = $validate->check($_POST, array(
 				'username' => array('required' => true),
-				'password' => array('required' => true)
+				'passwd' => array('required' => true)
 			));
 			if ($validation->passed())
 			{
 				$user = new user();
-				$login = $user->login(input::get('username'), input::get('password'));
+				$login = $user->login(input::get('username'), input::get('passwd'));
 
 				if($login)
 				{
@@ -49,7 +49,7 @@
 	<div class="login_box">
 		<form action="" method="post" autocomplete="off">
 			<input type="text" class="input_area" name="username" id="username" placeholder="Username"> <br>
-			<input type="password" class="input_area" name="password" id="password" placeholder="Password"> <br>
+			<input type="password" class="input_area" name="passwd" id="passwd" placeholder="Password"> <br>
 			<input type="hidden" name="token" value="<?php echo token::generate(); ?>" >
 			<input type="submit" class="button" name="submit" id="submit" value="Login">
 		</form>

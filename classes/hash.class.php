@@ -4,16 +4,11 @@
 
 	class hash
 	{
-		public static function make($string, $salt = '')
+		public static function make($string)
 		{
-			return hash('whirlpool', $string . $salt);
+			return hash('whirlpool', $string);
 		}
-		
-		public static function salt($length)
-		{
-			return random_bytes($length);
-		}
-		
+
 		public static function unique()
 		{
 			return self::make(uniqid());

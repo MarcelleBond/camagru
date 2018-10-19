@@ -9,7 +9,7 @@
 					'required' => true,
 					'min' => 2,
 					'max' => 20,
-					'unique' => 'users' 
+					'unique' => 'users'
 				),
 				'passwd' => array(
 					'required' => true,
@@ -30,16 +30,13 @@
 			{
 				$user = new user();
 
-				$salt = hash::salt(32);
 				try
 				{
 					$user->create(array(
 						'username' => input::get('username'),
-						'password' => hash::make(input::get('passwd'), $salt),
-						'salt' => $salt,
+						'passwd' => hash::make(input::get('passwd')),
 						'name' => input::get('name'),
-						'joined' => date('Y-m-d H:i:s'),
-						'group' => 1
+						'groups' => 1
 					));
 
 					session::flash('home', 'you have been regestered and can login');

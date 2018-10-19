@@ -17,4 +17,8 @@
 		echo '<p>' . session::flash('home') .'<p>';
 	}
 
+	$user = new user();
+	if ($user->isloggedin()) {
+		echo 'logged in';
+	}
 ?>

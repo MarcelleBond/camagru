@@ -17,6 +17,7 @@
 				$this->_pdo = new PDO('mysql:host=' . config::get('mysql/host') .';
 				dbname=' . config::get('mysql/db'), config::get('mysql/user'),
 				config::get('mysql/password'));
+				$this->_pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
 
 			}
 			catch (PDOException $e)
