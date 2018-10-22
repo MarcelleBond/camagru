@@ -119,6 +119,18 @@
 		{
 			return $this->_isLoggedin;
 		}
+
+		public function update($fields = array(), $id =null)
+		{
+			if(!$id && $this->isloggedin())
+			{
+				$id = $this->data()->user_id;
+			}
+			if(!$this->_db->update('users', $id, $fields))
+			{
+				throw new Exception('There was a problem updating');
+			}
+		}
 	}
 
 ?>
