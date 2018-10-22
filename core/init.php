@@ -6,7 +6,7 @@
 		'mysql' => array(
 			'host' => 'localhost',
 			'user' => 'root',
-			'password' => '123456',
+			'password' => '',
 			'db' => "camagru"
 		),
 		'remember' => array(
@@ -24,4 +24,16 @@
 	});
 
 	require_once 'functions/sanitize.php';
+
+	if(cookie::exists(config::get('remember/cookie_name')) && session::exists(config::get('session/session_name')))
+	{
+		$hash = config::get('cookie/cookie_name');
+		$hashcheck = DB::get('users_session', array('hash', '=', $hash));
+
+		if($hashcheck->count())
+		{
+			$user = new user($hashcheck);
+		}
+	}
+
 ?>

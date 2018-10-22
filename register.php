@@ -19,6 +19,10 @@
 					'required' => true,
 					'matches' => 'passwd'
 				),
+				'email' => array(
+					'required' => true,
+					'unique' => 'users'
+				),
 				'name' => array(
 					'required' => true,
 					'min' => 2,
@@ -35,6 +39,7 @@
 					$user->create(array(
 						'username' => input::get('username'),
 						'passwd' => hash::make(input::get('passwd')),
+						'email' => input::get('email'),
 						'name' => input::get('name'),
 						'groups' => 1
 					));
@@ -73,6 +78,7 @@
 			<div class="field"><input id="username" type="text" name="username" placeholder="Username" value="<?php echo escape(Input::get('username'));?>"></div>
 			<div><input id="passwd" type="password" name="passwd" placeholder="Password"></div>
 			<div><input id="passwd_again" type="password" name="passwd_again" placeholder="Password_again"></div>
+			<div><input id="email" type="email" name="email" placeholder="example@host.com"value="<?php echo escape(Input::get('email'));?>"></div>
 			<div><input id="name" type="text" name="name" placeholder="name"value="<?php echo escape(Input::get('name'));?>"></div>
 			<input type="hidden" name="token" value="<?php echo token::generate(); ?>" >
 			<div><input type="submit" value="register"></div>
