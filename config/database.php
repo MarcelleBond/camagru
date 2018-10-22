@@ -2,7 +2,6 @@
 
 $DB_DNS= "localhost";
 $DB_USER = "root";
-$DB_PASSWORD = "";
-$DB_NAME = "camagru";
+$DB_PASSWORD = "123456";
 
 ?>

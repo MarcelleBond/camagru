@@ -1,12 +1,12 @@
 <?php
-
+	require_once "config/database.php";
 	session_start();
 
 	$GLOBALS['config'] = array(
 		'mysql' => array(
-			'host' => 'localhost',
-			'user' => 'root',
-			'password' => '',
+			'host' => $DB_DNS,
+			'user' => $DB_USER,
+			'password' => $DB_PASSWORD,
 			'db' => "camagru"
 		),
 		'remember' => array(
@@ -25,15 +25,16 @@
 
 	require_once 'functions/sanitize.php';
 
-	if(cookie::exists(config::get('remember/cookie_name')) && session::exists(config::get('session/session_name')))
+ 	if(cookie::exists(config::get('remember/cookie_name')) && !session::exists(config::get('session/session_name')))
 	{
-		$hash = config::get('cookie/cookie_name');
+		$hash = cookie::get(config::get('cookie/cookie_name'));
 		$hashcheck = DB::get('users_session', array('hash', '=', $hash));
 
 		if($hashcheck->count())
 		{
-			$user = new user($hashcheck);
+			$user = new user($hashcheck->first()->user_id);
+			$user->login();
 		}
-	}
+	} 
 
 ?>

@@ -136,7 +136,6 @@
 					$x++;
 			}
 			$sql = "UPDATE {$table} SET {$set} WHERE `user_id` = {$id}";
-			echo $sql;
 			if (!$this->query($sql, $fields)->error())
 			{
 				return true;

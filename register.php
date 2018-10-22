@@ -1,5 +1,5 @@
 <?php
-	require_once 'core/init.php';
+ 	require_once 'core/init.php';
 	if (Input::exists()) {
 		if (token::check(input::get('token')))
 		{
@@ -22,11 +22,6 @@
 				'email' => array(
 					'required' => true,
 					'unique' => 'users'
-				),
-				'name' => array(
-					'required' => true,
-					'min' => 2,
-					'max' => 50
 				)
 			));
 
@@ -40,7 +35,6 @@
 						'username' => input::get('username'),
 						'passwd' => hash::make(input::get('passwd')),
 						'email' => input::get('email'),
-						'name' => input::get('name'),
 						'groups' => 1
 					));
 
@@ -69,8 +63,8 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Signup</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-	<script src="main.js"></script>
+	<!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css" /> -->
+	<!-- <script src="main.js"></script> -->
 </head>
 <body>
 	<div class="login_box">
@@ -79,7 +73,7 @@
 			<div><input id="passwd" type="password" name="passwd" placeholder="Password"></div>
 			<div><input id="passwd_again" type="password" name="passwd_again" placeholder="Password_again"></div>
 			<div><input id="email" type="email" name="email" placeholder="example@host.com"value="<?php echo escape(Input::get('email'));?>"></div>
-			<div><input id="name" type="text" name="name" placeholder="name"value="<?php echo escape(Input::get('name'));?>"></div>
+			<!-- <div><input id="name" type="text" name="name" placeholder="name"value="<?php echo escape(Input::get('name'));?>"></div> -->
 			<input type="hidden" name="token" value="<?php echo token::generate(); ?>" >
 			<div><input type="submit" value="register"></div>
 		</form>

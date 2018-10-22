@@ -28,7 +28,6 @@
 					}
 					else
 					{
-
 					}
 				}
 				else
@@ -49,7 +48,6 @@
 			if ($user) {
 				$field = (is_numeric($user)) ? 'user_id' : 'username';
 				$data = $this->_db->get('users', array($field, '=', $user));
-
 				if($data->count())
 				{
 					$this->_data = $data->first();
@@ -59,42 +57,49 @@
 			return false;
 		}
 
-		public function login($username = null, $passwd = null, $remember)
+		public function login($username = null, $passwd = null, $remember = false)
 		{
 			$user = $this->find($username);
-
-			if($user)
-			{
-				echo $this->data()->passwd ."\n";
-				if($this->data()->passwd === hash::make($passwd))
+			if (!$username && !$passwd && $this->exists()) {
+				session::put($this->_sessionName, $this->data()->id);
+			} else {
+				if($user)
 				{
-					session::put($this->_sessionName, $this->data()->user_id);
+					if (!strcmp($this->_data->username, $username)) {
 					
-					if ($remember) {
-						$hash = hash::unique();
-						$hashcheck = $this->_db->get('users_session', array('users_id', '=', $this->data()->user_id));
-
-						if(!$hashcheck->count())
+						if($this->data()->passwd === hash::make($passwd))
 						{
-							$this->_db->insert('users_session', array(
-								'user_id' => $this->data()->user_id,
-								'hash' => $hash
-							));
-						}
-						else
-						{
-							$hash = $hashcheck->first()->hash;
-						}
+							session::put($this->_sessionName, $this->data()->user_id);
+							if ($remember) {
+								$hash = hash::unique();
+								$hashcheck = $this->_db->get('users_session', array('user_id', '=', $this->data()->user_id));
+								if(!$hashcheck->count())
+								{
+									$this->_db->insert('users_session', array(
+										'user_id' => $this->data()->user_id,
+										'hash' => $hash
+									));
 
-						cookie::put($this->_cookieName, $hash, config::get('remember/cookie_expiry'));
+								}
+								else
+								{
+									$hash = $hashcheck->first()->hash;
+
+								}
+								cookie::put($this->_cookieName, $hash, config::get('remember/cookie_expiry'));
+							}
+
+							return true;
+						}
 					}
-
-					return true;
 				}
-				echo hash::make($passwd)."\n";
-
 			}
 			return false;
+		}
+
+		public function exists()
+		{
+			return (!empty($this->_data)) ? true : false;
 		}
 
 		public function data()
@@ -104,7 +109,10 @@
 
 		public function logout()
 		{
+			$this->_db->delete('users_session', array('user_id', '=', $this->data()->user_id));
+
 			session::delete($this->_sessionName);
+			cookie::delete($this->_cookieName);
 		}
 
 		public function isloggedin()
