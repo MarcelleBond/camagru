@@ -17,7 +17,10 @@
 		</ul>
 
 		<?php
-		
+		if (!$user->haspermission('admin'))
+		{
+			echo "i am an admin";
+		}
 	}
 	else 
 	{

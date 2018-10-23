@@ -131,6 +131,13 @@
 				throw new Exception('There was a problem updating');
 			}
 		}
+
+		public function haspermission($key)
+		{
+			$group = $this->_db->get('group', array('group_id', '=', $this->data()->grou ps));
+
+			print_r($group->first());
+		}
 	}
 
 ?>
