@@ -15,7 +15,7 @@
             `groups` INT(255) NOT NULL,
             PRIMARY KEY(`user_id`)
         )");
-        $dbh->exec("CREATE TABLE `camagru`.`group`(
+        $dbh->exec("CREATE TABLE `camagru`.`groups`(
             `group_id` INT(255) NOT NULL AUTO_INCREMENT,
             `group_name` VARCHAR(255) NOT NULL,
             `permissions` TEXT NOT NULL,
@@ -27,9 +27,9 @@
             `hash` VARCHAR(255) NOT NULL,
             PRIMARY KEY(`session_id`)
         )");
-        $dbh->exec("INSERT INTO `camagru`.`group`(`group_id`, `group_name`, `permissions`)
+        $dbh->exec("INSERT INTO `camagru`.`groups`(`group_id`, `group_name`, `permissions`)
             VALUES(NULL, 'Standard user', '')");
-        $dbh->exec("INSERT INTO `camagru`.`group`(`group_id`, `group_name`, `permissions`)
+        $dbh->exec("INSERT INTO `camagru`.`groups`(`group_id`, `group_name`, `permissions`)
         VALUES(
             NULL,
             'Administrator',

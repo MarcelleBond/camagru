@@ -25,16 +25,15 @@
 
 	require_once 'functions/sanitize.php';
 
- 	if(cookie::exists(config::get('remember/cookie_name')) && !session::exists(config::get('session/session_name')))
+ 	 if(cookie::exists(config::get('remember/cookie_name')) && !session::exists(config::get('session/session_name')))
 	{
-		$hash = cookie::get(config::get('cookie/cookie_name'));
-		$hashcheck = DB::get('users_session', array('hash', '=', $hash));
-
+		$hash = cookie::get(config::get('remember/cookie_name'));
+		$hashcheck = DB::getInstance()->get('users_session', array('hash', '=', $hash));
 		if($hashcheck->count())
 		{
 			$user = new user($hashcheck->first()->user_id);
 			$user->login();
 		}
-	} 
+	}  
 
 ?>
