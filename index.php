@@ -9,7 +9,7 @@
 
 	$user = new user();
 	if ($user->isloggedin()) {
-		?> <p>Hello<a href="#"><?php echo escape($user->data()->username);?></a>!</p>
+		?> <p>Hello<a href="profile.php?user=<?php echo escape($user->data()->username);?>"><?php echo escape($user->data()->username);?></a>!</p>
 		<ul>
 			<li><a href="logout.php">Log out</a></li>
 			<li><a href="update.php">Update details</a></li>
@@ -17,7 +17,7 @@
 		</ul>
 
 		<?php
-		if (!$user->haspermission('admin'))
+		if ($user->haspermission('admin'))
 		{
 			echo "i am an admin";
 		}

@@ -61,7 +61,7 @@
 		{
 			$user = $this->find($username);
 			if (!$username && !$passwd && $this->exists()) {
-				session::put($this->_sessionName, $this->data()->id);
+				session::put($this->_sessionName, $this->data()->user_id);
 			} else {
 				if($user)
 				{
@@ -134,9 +134,16 @@
 
 		public function haspermission($key)
 		{
-			$group = $this->_db->get('group', array('group_id', '=', $this->data()->grou ps));
-
-			print_r($group->first());
+			$group = $this->_db->get('groups', array('group_id', '=', $this->data()->groups));
+			
+			if ($group->count()) {
+				$permissions = json_decode($group->first()->permissions, true);
+				
+				if ($permissions[$key] == true) {
+					return true;
+				}
+			}
+			return false;
 		}
 	}
 
