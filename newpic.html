@@ -9,7 +9,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Camagru</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<!-- <link rel="stylesheet" type="text/css" media="screen" href="css/pic.css"/> -->
+	<link rel="stylesheet" type="text/css" media="screen" href="css/pic.css"/>
 	<script src="js/pic.js"></script>
 </head>
 <body>
@@ -23,15 +23,14 @@
 			Take Photo
 		</button>
 		<select id="photo_filter">
-			<option value="non">Normal</option>
+			<option value="none">Normal</option>
 			<option value="grayscale(100%)">Grayscale</option>
 			<option value="sepia(100%)">Sepia</option>
 			<option value="invert(100%)">Invert</option>
 			<option value="hue-rotate(90deg)">Hue</option>
-			<option value="blur">Blur</option>
-			<option value="contrast">Contrast</option>
+			<option value="blur(10px)">Blur</option>
+			<option value="contrast(200%)">Contrast</option>
 		</select>
-		<button id="clear_button">Clear</button>
 		<canvas id="canvas"></canvas>
 	</div>
 

@@ -46,13 +46,22 @@ window.onload = function()
 		}
 	}, false);
 
+	// photo button event
 	photo_button.addEventListener('click',function(e){
-		
+		photos.innerHTML = "";		
 		takepicture();
 
 		e.preventDefault()
 	}, false);
 
+	photo_filter.addEventListener('change', function(e){
+		//set filter to users choice;
+		
+		filter = e.target.value;
+		video.style.filter = filter;
+		e.preventDefault()
+	});
+	//  take pic from canvas
 	function takepicture()
 	{
 		//creating the canvas
@@ -70,7 +79,9 @@ window.onload = function()
 			const img = document.createElement('img');
 			// set the image source 
 			img.setAttribute('src', imgUrl);
-			//
+			img.style.filter = filter;
+			// ading images to the photo div
+			photos.appendChild (img);
 		}
 	}
 
