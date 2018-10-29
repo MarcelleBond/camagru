@@ -21,9 +21,12 @@
 	<div class="top_container">
 
 	<!--  -->
-
+		
+			<div id="overlay" class="overlay" onclick="off()">
 		<video id='video'>Stream not available...</video>
-
+		</div>
+		<button onclick="on()">OFF</button>
+		
 	<!--  -->
 		<button id="photo_button" class="btn btn_darkk">
 			Take Photo
@@ -31,7 +34,9 @@
 		<button id="save_photo" class="btn btn_darkk">
 			save
 		</button>
-		
+		<div style="background-image: url(images/emojis/emoji_1.jpg)">
+
+		</div>
 			<img height='100px' width='100px' id="emoji1" name="emoji1" src="images/emojis/emoji_1.jpg">
 		
 		<select id="photo_filter">
@@ -55,6 +60,15 @@
 	</div>
 
 </body>
+<script>
+function on() {
+	alert("FINISH");
+    document.getElementById("overlay").style.display = "none";
+}
 
+function off() {
+    document.getElementById("overlay").style.display = "block";
+}
+</script>
 
 </html>

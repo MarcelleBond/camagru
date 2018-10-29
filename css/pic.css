@@ -2,3 +2,24 @@
 {
     display: none;
 } */
+
+#text{
+    position: absolute;
+    top: 110%;
+    left: 50%;
+    font-size: 50px;
+    color: white;
+    transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+}
+
+.overlay {
+    position: absolute;
+    opacity: 0.0;
+ 
+
+   
+    background-color: none !important; 
+    z-index: 0;
+/*     cursor: pointer; */
+}
