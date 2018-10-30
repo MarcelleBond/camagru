@@ -2,24 +2,27 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="js/pic.js"></script>
+<script src="js/pic.js"></script> 
 <style>
 #overlay {
     position: fixed;
     display: none;
     width: 20%;
     height: 20%;
-    top: 50;
-    left: 10;
+    top: 100;
+    left: 60;
     right: 70;
     bottom: 30;
     z-index: 2;
+   
+    
     cursor: pointer;
+
 }
 
 #text{
     position: absolute;
-    top: 110%;
+    top: 50%;
     left: 50%;
     font-size: 50px;
     color: white;
@@ -29,8 +32,8 @@
 </style>
 </head>
 <body>
-
-<!-- <div id="overlay" onclick="off()">
+ <!-- 
+<div id="overlay" onclick="off()">
   <div id="text">Overlay Text</div>
 </div>
 
@@ -47,54 +50,49 @@ function on() {
 function off() {
     document.getElementById("overlay").style.display = "none";
 }
-</script> -->
+</script>  --> 
+
+
+
+
 
 <div class="top_container">
 
-<!--  -->
+
     
         <div id="overlay" class="overlay" onclick="off()">
-        <img height='100px' width='100px' id="emoji1" name="emoji1" src="images/emojis/poo.png">
+        <img class="text" height='100px' width='100px' id="emoji1" name="emoji1" src="images/emojis/poo.png">
         </div>
         <div>
     <video id='video'>Stream not available...</video>
         </div>
     <button onclick="on()">OFF</button>
     
-<!--  -->
+
     <button id="photo_button" class="btn btn_darkk">
         Take Photo
     </button>
     <button id="save_photo" class="btn btn_darkk">
         save
     </button>
-    <div style="background-image: url(images/emojis/emoji_1.jpg)">
+   
 
     </div>
        
-    
-    <select id="photo_filter">
-        <option value="none">Normal</option>
-        <option value="images/emojis/emoji_1.jpg">Grayscale</option>
-        <option value="images/emojis/emoji_2.jpg">Sepia</option>
-        <option value="images/emojis/emoji_3.jpg">Invert</option>
-        <option value="images/emojis/emoji_4.jpg">Hue</option>
-        <option value="images/emojis/emoji_5.jpg">Blur</option>
-        <option value="images/emojis/emoji_6.jpg">Contrast</option>
-        <option value="images/emojis/emoji_7.jpg">Contrast</option>
-        <option value="images/emojis/emoji_8.jpg">Contrast</option>
-        <option value="images/emojis/emoji_9.jpg">Contrast</option>
-        <option value="images/emojis/emoji_10.jpg">Contrast</option>
-    </select>
+    <div>
+    <img id="e1" src="images/emojis/penguin.png" height='100px' width='100px'>
+    <img id="e2" src="images/emojis/poo.png" height='100px' width='100px'>
+    <br>
+
     <canvas id="canvas"></canvas>
 </div>
 
 <div class="bottom_container">
     <div id="photos"></div>
-</div>
+</div> 
 <script>
-function on() {
-	alert("FINISH");
+ function on() {
+	//alert("FINISH");
     document.getElementById("emoji1").style.display = "block";
     document.getElementById("overlay").style.display = "block";
 }
@@ -103,6 +101,38 @@ function off() {
     document.getElementById("emoji1").style.display = "block";
     document.getElementById("overlay").style.display = "none";
 }
+
+
+
+        emo1 = document.getElementById("e1");
+
+		emo2 = document.getElementById("e2");
+		emo1.addEventListener("click", function(){switchsrc(emo1);}, false);
+        emo2.addEventListener("click", function(){switchsrc(emo2);}, false);
+
+function switchsrc(emonew)
+{
+    //document.getElementById("emoji1").style.display = "block";
+    document.getElementById("overlay").style.display = "block";
+    var emoswitch = document.getElementById("emoji1");
+    var ovl = document.getElementById("overlay");
+    switch (emonew.id)
+    {
+        case "e1" :
+            emoswitch.setAttribute('src', emonew.src);
+
+            ovl.style.paddingTop = "180px";
+            ovl.style.paddingLeft = "30px";
+            break;
+        case "e2" :
+        emoswitch.setAttribute('src', emonew.src);
+        ovl.style.paddingTop = "170px";
+            ovl.style.paddingLeft = "70px";
+            break;
+    }
+    
+} 
+
 </script>
      
 </body>

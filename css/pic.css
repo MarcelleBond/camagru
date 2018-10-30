@@ -4,8 +4,8 @@
 } */
 
 #text{
-    position: absolute;
-    top: 110%;
+    position: relative;
+    top: 20%;
     left: 50%;
     font-size: 50px;
     color: white;
@@ -14,12 +14,12 @@
 }
 
 .overlay {
-    position: absolute;
+/*     position: relative; */
     opacity: 0.0;
  
+    
 
-   
     background-color: none !important; 
     z-index: 0;
-/*     cursor: pointer; */
+    cursor: pointer;
 }
