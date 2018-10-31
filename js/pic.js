@@ -2,7 +2,7 @@ window.onload = function()
 {
 
 
-		var emo2 = document.getElementById('emoji1').addEventListener("click", ols);
+	document.getElementById('emoji1').addEventListener("click", ols);
 	
 	
 

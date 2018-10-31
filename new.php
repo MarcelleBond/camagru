@@ -5,7 +5,7 @@
 <script src="js/pic.js"></script> 
 <style>
 #overlay {
-    position: fixed;
+    position: absolute;
     display: none;
     width: 20%;
     height: 20%;
@@ -26,9 +26,10 @@
     left: 50%;
     font-size: 50px;
     color: white;
-    transform: translate(-50%,-50%);
-    -ms-transform: translate(-50%,-50%);
+    /* transform: translate(-50%,-50%); */
+    /* -ms-transform: translate(-50%,-50%); */
 }
+
 </style>
 </head>
 <body>
@@ -66,7 +67,7 @@ function off() {
         <div>
     <video id='video'>Stream not available...</video>
         </div>
-    <button onclick="on()">OFF</button>
+    <!-- <button onclick="on()">On</button> -->
     
 
     <button id="photo_button" class="btn btn_darkk">
@@ -93,12 +94,12 @@ function off() {
 <script>
  function on() {
 	//alert("FINISH");
-    document.getElementById("emoji1").style.display = "block";
+    // document.getElementById("emoji1").style.display = "block";
     document.getElementById("overlay").style.display = "block";
 }
 
 function off() {
-    document.getElementById("emoji1").style.display = "block";
+    // document.getElementById("emoji1").style.display = "block";
     document.getElementById("overlay").style.display = "none";
 }
 
@@ -126,7 +127,7 @@ function switchsrc(emonew)
             break;
         case "e2" :
         emoswitch.setAttribute('src', emonew.src);
-        ovl.style.paddingTop = "170px";
+            ovl.style.paddingTop = "170px";
             ovl.style.paddingLeft = "70px";
             break;
     }
