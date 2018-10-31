@@ -15,6 +15,8 @@
         ?>
             <h3><?php echo escape($data->username); ?></h3>
             <p><?php echo escape($data->email); ?></p>
+            <li><a href="update.php">Update details</a></li>
+			<li><a href="changepassword.php">change password</a></li>
         <?php
     }
     

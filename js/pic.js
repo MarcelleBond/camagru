@@ -85,14 +85,20 @@ window.onload = function()
 
 	function savepic(){
 		var dataURL = canvas.toDataURL();
+		var	emoji = document.getElementById("emoji1").src;
 		const form = document.createElement('form');
-		form.action = 'webcamupload.php';
+		form.action = 'webupload.php';
 		form.method = 'post';
-		const homeInput = document.createElement('input');
-		homeInput.type = 'hidden';
-		homeInput.name = 'img64';
-		homeInput.value = dataURL;
-		form.appendChild(homeInput);
+		const myogimage = document.createElement('input');
+		const myoverlay = document.createElement('input');
+		myogimage.type = 'hidden';
+		myogimage.name = 'img64';
+		myogimage.value = dataURL;
+		myoverlay.type = 'hidden';
+		myoverlay.name = 'emoji64';
+		myoverlay.value = emoji;
+		form.appendChild(myogimage);
+		form.appendChild(myoverlay);
 		document.body.appendChild(form);
 		form.submit();
 		}
