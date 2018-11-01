@@ -1,74 +1,87 @@
-<!-- <?php
+<?php
 	require_once 'core/init.php';
-?> -->
+
+	$user = new user;
+?>
 
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Camagru</title>
+	<title>New Pic</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" media="screen" href="css/pic.css"/>
+	<link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="css/pic.css" />
 	<script src="js/pic.js"></script>
-	<script src="js/test.js"></script>
 </head>
 <body>
 	<div class="navbar">
-		<h1>Camagru</h1>
+			<ul>
+				<li class="left"><a href="index.php">Home</a></li>
+				<li class="left"><a href="profile.php?user=<?php echo escape($user->data()->username);?>"><?php echo escape($user->data()->username);?></a></li>                    
+				<li class="left"><a href="new.php">NewPic</a></li>
+				<li class="right"><a href="logout.php">Log out</a></li>
+			</ul>
 	</div>
-
+	<img class="logo" src="images/site_images/logo.png" alt="logo">
 	<div class="top_container">
-
-	<!--  -->
-		
-			<div id="overlay" class="overlay" onclick="off()">
-		<video id='video'>Stream not available...</video>
+		<div id="overlay" class="overlay" onclick="off()">
+			<img class="text" height='100px' width='100px' id="emoji1" name="emoji1" src="images/emojis/poo.png">
 		</div>
-		<button onclick="on()">OFF</button>
-		
-	<!--  -->
-		<button id="photo_button" class="btn btn_darkk">
-			Take Photo
-		</button>
-		<button id="save_photo" class="btn btn_darkk">
-			save
-		</button>
-		<div style="background-image: url(images/emojis/emoji_1.jpg)">
-
+		<div>
+			<video id='video'>Stream not available...</video>
 		</div>
-			<img height='100px' width='100px' id="emoji1" name="emoji1" src="images/emojis/emoji_1.jpg">
-		
-		<select id="photo_filter">
-			<option value="none">Normal</option>
-			<option value="images/emojis/emoji_1.jpg">Grayscale</option>
-			<option value="images/emojis/emoji_2.jpg">Sepia</option>
-			<option value="images/emojis/emoji_3.jpg">Invert</option>
-			<option value="images/emojis/emoji_4.jpg">Hue</option>
-			<option value="images/emojis/emoji_5.jpg">Blur</option>
-			<option value="images/emojis/emoji_6.jpg">Contrast</option>
-			<option value="images/emojis/emoji_7.jpg">Contrast</option>
-			<option value="images/emojis/emoji_8.jpg">Contrast</option>
-			<option value="images/emojis/emoji_9.jpg">Contrast</option>
-			<option value="images/emojis/emoji_10.jpg">Contrast</option>
-		</select>
+		<button id="photo_button" class="btn btn_darkk">Take Photo</button>
+		<button id="save_photo" class="btn btn_darkk">save</button>
+    </div>
+       
+	<div>
+		<img id="e1" src="images/emojis/penguin.png" height='100px' width='100px'>
+		<img id="e2" src="images/emojis/poo.png" height='100px' width='100px'>
+		<br>
+
 		<canvas id="canvas"></canvas>
 	</div>
 
 	<div class="bottom_container">
 		<div id="photos"></div>
 	</div>
-
 </body>
-<script>
-function on() {
-	alert("FINISH");
-    document.getElementById("overlay").style.display = "none";
-}
 
-function off() {
-    document.getElementById("overlay").style.display = "block";
-}
+<script>
+	function on() {
+		document.getElementById("overlay").style.display = "block";
+	}
+
+	function off() {
+		document.getElementById("overlay").style.display = "none";
+	}
+
+	emo1 = document.getElementById("e1");
+	emo2 = document.getElementById("e2");
+	emo1.addEventListener("click", function(){switchsrc(emo1);}, false);
+	emo2.addEventListener("click", function(){switchsrc(emo2);}, false);
+
+	function switchsrc(emonew)
+	{
+		document.getElementById("overlay").style.display = "block";
+		var emoswitch = document.getElementById("emoji1");
+		var ovl = document.getElementById("overlay");
+		switch (emonew.id)
+		{
+			case "e1" :
+				emoswitch.setAttribute('src', emonew.src);
+				ovl.style.paddingTop = "180px";
+				ovl.style.paddingLeft = "30px";
+				break;
+			case "e2" :
+				emoswitch.setAttribute('src', emonew.src);
+				ovl.style.paddingTop = "170px";
+				ovl.style.paddingLeft = "70px";
+				break;
+		}
+	} 
 </script>
 
 </html>

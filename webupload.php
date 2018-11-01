@@ -9,9 +9,8 @@
     $test = base64_decode($data[1]);
 //try imgcreate
     $user_id = $user->data()->user_id;
-    file_put_contents("images/gallary/"."user_".$user_id."_image_".$img_id.'.png', $test);
-
-    $dest= imagecreatefrompng("images/gallary/"."user_".$user_id."_image_".$img_id.'.png');
+    file_put_contents("images/gallary/user_".$user_id."_image_".$img_id.".png", $test);
+    $dest= imagecreatefrompng("images/gallary/user_".$user_id."_image_".$img_id.".png");
 
     $src = imagecreatefrompng($emo);
     $width = ImageSx($src);
@@ -19,12 +18,13 @@
     $height = ImageSy($src);
     $x = $width/4; $y = $height/4;
     ImageCopyResampled($dest,$src,0,0,0,0,$x,$y,$width,$height);
-    imagepng($dest, 'images/gallary/'."user_".$user_id."_image_".$img_id.'.png');
-    $db->insert('gallery', array(
+    imagepng($dest, "images/gallary/user_".$user_id."_image_".$img_id.".png");
+
+     $db->insert('gallery', array(
         'img_name' => 'images/gallary/'."user_".$user_id."_image_".$img_id.'.png',
         'user_id' => $user_id
     ));
-    redirect::to("new.php");
+    redirect::to("new.php"); 
 
 
 ?>

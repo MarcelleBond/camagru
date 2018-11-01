@@ -1,62 +1,28 @@
+<?php
+    require_once 'core/init.php';
+
+    $user = new user;
+?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" media="screen" href="css/pic.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
 <script src="js/pic.js"></script> 
-<style>
-#overlay {
-    position: absolute;
-    display: none;
-    width: 20%;
-    height: 20%;
-    top: 100;
-    left: 60;
-    right: 70;
-    bottom: 30;
-    z-index: 2;
-   
-    
-    cursor: pointer;
-
-}
-
-#text{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    font-size: 50px;
-    color: white;
-    /* transform: translate(-50%,-50%); */
-    /* -ms-transform: translate(-50%,-50%); */
-}
-
-</style>
 </head>
 <body>
- <!-- 
-<div id="overlay" onclick="off()">
-  <div id="text">Overlay Text</div>
-</div>
-
-<div style="padding:20px">
-  <h2>Overlay with Text</h2>
-  <button onclick="on()">Turn on overlay effect</button>
-</div>
-
-<script>
-function on() {
-    document.getElementById("overlay").style.display = "block";
-}
-
-function off() {
-    document.getElementById("overlay").style.display = "none";
-}
-</script>  --> 
-
-
-
-
-
+<div class="navbar">
+				<ul>
+                    <li class="left"><a href="index.php">Home</a></li>
+					<li class="left"><a href="profile.php?user=<?php echo escape($user->data()->username);?>"><?php echo escape($user->data()->username);?></a></li>                    
+					<li class="left"><a href="new.php">NewPic</a></li>
+					<li class="right"><a href="logout.php">Log out</a></li>
+				</ul>
+			</div>
+			<img class="logo" src="images/site_images/logo.png" alt="logo">
 <div class="top_container">
 
 
@@ -90,7 +56,7 @@ function off() {
 
 <div class="bottom_container">
     <div id="photos"></div>
-</div> 
+</div>
 <script>
  function on() {
 	//alert("FINISH");

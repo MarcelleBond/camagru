@@ -63,19 +63,26 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Signup</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css" /> -->
+	<link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="css/signup.css" />
 	<!-- <script src="main.js"></script> -->
 </head>
 <body>
+	<div class="navbar">
+		<ul>
+			<li class="left"><a href="index.php">Home</a></li>
+			<li class="right"><a href="login.php">Login</a></li>
+		</ul>
+	</div>
+	<img class="logo" src="images/site_images/logo.png" alt="logo">
 	<div class="login_box">
 		<form action="" method="post" autocomplete="off">
-			<div class="field"><input id="username" type="text" name="username" placeholder="Username" value="<?php echo escape(Input::get('username'));?>"></div>
-			<div><input id="passwd" type="password" name="passwd" placeholder="Password"></div>
-			<div><input id="passwd_again" type="password" name="passwd_again" placeholder="Password_again"></div>
-			<div><input id="email" type="email" name="email" placeholder="example@host.com"value="<?php echo escape(Input::get('email'));?>"></div>
-			<!-- <div><input id="name" type="text" name="name" placeholder="name"value="<?php echo escape(Input::get('name'));?>"></div> -->
+			<input class="input_area" id="username" type="text" name="username" placeholder="Username" value="<?php echo escape(Input::get('username'));?>">
+			<input class="input_area" id="passwd" type="password" name="passwd" placeholder="Password">
+			<input class="input_area" id="passwd_again" type="password" name="passwd_again" placeholder="Password again">
+			<input class="input_area" id="email" type="email" name="email" placeholder="example@host.com"value="<?php echo escape(Input::get('email'));?>">
 			<input type="hidden" name="token" value="<?php echo token::generate(); ?>" >
-			<div><input type="submit" value="register"></div>
+			<input class="button" type="submit" value="register">
 		</form>
 	</div>
 </body>

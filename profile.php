@@ -27,20 +27,15 @@
             <div class="navbar">
 				<ul>
 					<li class="left"><a href="index.php">Home</a></li>
-					<li class="left"><a href="profile.php?user=<?php echo escape($user->data()->username);?>"><?php echo escape($user->data()->username);?></a></li>
 					<li class="left"><a href="new.php">NewPic</a></li>
 					<li class="right"><a href="logout.php">Log out</a></li>
+                    <li><a class="right" href="update.php">Update details</a></li>
+                    <li><a class="right" href="changepassword.php">change password</a></li>
 				</ul>
 			</div>
-            <div >
-                <!-- <img class="logo" src="images/site_images/logo.png" alt="logo"> -->
-            </div>
+                <img class="logo" src="images/site_images/logo.png" alt="logo">
             <div>
-                <ul>
-                    <li><a class="update" href="update.php">Update details</a></li>
-                    <li><a class="update" href="changepassword.php">change password</a></li>
-                </ul>
-                 <h3><?php echo escape($data->username); ?></h3>
+                <h3><?php echo escape($data->username); ?></h3>
                 <p><?php echo escape($data->email); ?></p>
             </div>
             </body>

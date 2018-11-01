@@ -17,7 +17,6 @@ window.onload = function()
 	const canvas = document.getElementById('canvas');
 	const photos = document.getElementById('photos');
 	const photo_button = document.getElementById('photo_button');
-	const photo_filter = document.getElementById('photo_filter');
 	const save_photo = document.getElementById('save_photo');
 
 	navigator.mediaDevices.getUserMedia({video: true, audio: false})
@@ -56,12 +55,6 @@ window.onload = function()
 		e.preventDefault();
 	}, false);
 
-	photo_filter.addEventListener('change', function(e)
-	{
-		filter = e.target.value;
-		video.style.filter = filter;
-		e.preventDefault()
-	});
 
 	function takepicture()
 	{
