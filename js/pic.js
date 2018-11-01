@@ -65,14 +65,6 @@ window.onload = function()
 			canvas.height = height;
 
 			context.drawImage(video, 0, 0, width, height);
-			
-			// var emoji = new Image();
-			// emoji.src = filter;
-			// context.drawImage(emoji, 0, 0, width, height);
-			
-			const img = document.createElement('img');
-			img.setAttribute('src', filter);
-			photos.appendChild (img);
 		}
 	}
 
