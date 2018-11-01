@@ -10,7 +10,6 @@ window.onload = function()
 
 	let width = 500,
 		height = 0,
-		filter = 'none',
 		streaming = false;
 
 	const video = document.getElementById('video');
@@ -63,12 +62,13 @@ window.onload = function()
 		if (width && height) {
 			canvas.width = width;
 			canvas.height = height;
-
 			context.drawImage(video, 0, 0, width, height);
+
 		}
 	}
 
-	function savepic(){
+	function savepic()
+	{
 		var dataURL = canvas.toDataURL();
 		var	emoji = document.getElementById("emoji1").src;
 		const form = document.createElement('form');
@@ -86,14 +86,14 @@ window.onload = function()
 		form.appendChild(myoverlay);
 		document.body.appendChild(form);
 		form.submit();
-		}
+	}
 
 
-		function ols()
-		{
-			//canvas,video
-			alert('finally');
-		}
+	function ols()
+	{
+		//canvas,video
+		alert('finally');
+	}
 
 
 		///////////////////////////

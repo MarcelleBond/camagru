@@ -7,7 +7,7 @@
     $data = explode( ',', $_POST["img64"] );
     $emo = $_POST["emoji64"];
     $test = base64_decode($data[1]);
-//try imgcreate
+
     $user_id = $user->data()->user_id;
     file_put_contents("images/gallary/user_".$user_id."_image_".$img_id.".png", $test);
     $dest= imagecreatefrompng("images/gallary/user_".$user_id."_image_".$img_id.".png");

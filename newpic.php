@@ -34,18 +34,13 @@
 		</div>
 		<button id="photo_button" class="btn btn_darkk">Take Photo</button>
 		<button id="save_photo" class="btn btn_darkk">save</button>
+		<canvas id="canvas"></canvas>
     </div>
        
 	<div>
 		<img id="e1" src="images/emojis/penguin.png" height='100px' width='100px'>
 		<img id="e2" src="images/emojis/poo.png" height='100px' width='100px'>
 		<br>
-
-		<canvas id="canvas"></canvas>
-	</div>
-
-	<div class="bottom_container">
-		<div id="photos"></div>
 	</div>
 </body>
 
