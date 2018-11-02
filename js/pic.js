@@ -6,11 +6,11 @@ window.onload = function()
 		streaming = false;
 
 	const video = document.getElementById('video');
-	const canvas = document.getElementById('canvas');
+	const canvas1 = document.getElementById('canvas');
 	const canvas2 = document.getElementById('canvas2');
 	const photos = document.getElementById('photos');
 	const photo_button = document.getElementById('photo_button');
-	// const save_photo = document.getElementById('save_photo');
+	const save_photo = document.getElementById('save_photo');
 
 	navigator.mediaDevices.getUserMedia({video: true, audio: false})
 
@@ -55,12 +55,12 @@ window.onload = function()
 
 	function takepicture()
 	{
-		const context = canvas.getContext('2d');
+		const context1 = canvas1.getContext('2d');
 
 		if (width && height) {
-			canvas.width = width;
-			canvas.height = height;
-			context.drawImage(video, 0, 0, width, height);
+			canvas1.width = width;
+			canvas1.height = height;
+			context1.drawImage(video, 0, 0, width, height);
 			
 		}
 	}
@@ -68,8 +68,8 @@ window.onload = function()
 	{
 		const context2 = canvas2.getContext('2d');
 		if (width && height) {
-			canvas.width = width;
-			canvas.height = height;
+			canvas2.width = width;
+			canvas2.height = height;
 			context2.drawImage(video, 0, 0, width, height);
 			if (document.getElementById("emoji1").hasAttribute("src")) {
 				var emoji1 = document.getElementById("emoji1");
@@ -89,7 +89,6 @@ window.onload = function()
 	function savepic()
 	{
 		var dataURL = canvas.toDataURL();
-		alert(dataURL);
 		var	emoji = document.getElementById("emoji1").src;
 		const form = document.createElement('form');
 		form.action = 'webupload.php';
