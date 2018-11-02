@@ -12,10 +12,8 @@
     $img_id = $imgnum->count() + 1;
     $data = explode( ',', $_POST["img64"] );
     $emo = $_POST["emoji64"];
-    if(!empty($_POST["emoji64_2"]));
-        $emo2 = $_POST["emoji64_2"];
     $test = base64_decode($data[1]);
-
+    echo $test;
     $user_id = $user->data()->user_id;
     file_put_contents("images/gallary/user_".$user_id."_image_".$img_id.".png", $test);
     $dest= imagecreatefrompng("images/gallary/user_".$user_id."_image_".$img_id.".png");
@@ -103,7 +101,7 @@
         'img_name' => 'images/gallary/'."user_".$user_id."_image_".$img_id.'.png',
         'user_id' => $user_id
     ));
-    redirect::to("newpic.php"); 
+    // redirect::to("newpic.php"); 
 
 
 ?>

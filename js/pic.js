@@ -89,6 +89,7 @@ window.onload = function()
 	function savepic()
 	{
 		var dataURL = canvas.toDataURL();
+		alert(dataURL);
 		var	emoji = document.getElementById("emoji1").src;
 		const form = document.createElement('form');
 		form.action = 'webupload.php';
