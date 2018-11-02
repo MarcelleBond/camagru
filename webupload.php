@@ -10,11 +10,14 @@
 
     $db = DB::getInstance();
     $user = new user();
+
     $imgnum = $db->get("gallery",array('user_id', '=', $user->data()->user_id));
     $img_id = $imgnum->count() + 1;
+    $user_id = $user->data()->user_id;
+    
     $data = explode( ',', $_POST["img64"] );
     $test = base64_decode($data[1]);
-    $user_id = $user->data()->user_id;
+    
     file_put_contents("images/gallary/user_".$user_id."_image_".$img_id.".png", $test);
     $dest= imagecreatefrompng("images/gallary/user_".$user_id."_image_".$img_id.".png");
 

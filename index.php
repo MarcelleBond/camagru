@@ -20,6 +20,7 @@
 			<link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
 		</head>
 		<body>
+		<header>
 			<div class="navbar">
 				<ul>
 					<li class="left"><a href="index.php">Home</a></li>
@@ -29,7 +30,11 @@
 				</ul>
 			</div>
 			<img class="logo" src="images/site_images/logo.png" alt="logo">
-
+		</header>
+			whats good world
+		<footer>
+			
+		</footer>
 		</body>
 		</html>
 

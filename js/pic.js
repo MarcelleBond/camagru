@@ -81,7 +81,7 @@ window.onload = function()
 				var emoji2 = document.getElementById("emoji2");
 				var left2 = parseInt(emoji2.style.left);
 				var top2 = parseInt(emoji2.style.top);
-				context2.drawImage(emoji2,left2 + 100,top2,100,100);
+				context2.drawImage(emoji2,left2,top2,100,100);
 			}
 		}
 	}
