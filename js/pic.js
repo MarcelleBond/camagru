@@ -1,22 +1,16 @@
 window.onload = function()
 {
 
-
-	document.getElementById('emoji1').addEventListener("click", ols);
-	
-	
-
-
-
 	let width = 500,
 		height = 0,
 		streaming = false;
 
 	const video = document.getElementById('video');
 	const canvas = document.getElementById('canvas');
+	const canvas2 = document.getElementById('canvas2');
 	const photos = document.getElementById('photos');
 	const photo_button = document.getElementById('photo_button');
-	const save_photo = document.getElementById('save_photo');
+	// const save_photo = document.getElementById('save_photo');
 
 	navigator.mediaDevices.getUserMedia({video: true, audio: false})
 
@@ -37,6 +31,8 @@ window.onload = function()
 			video.setAttribute('height',height);
 			canvas.setAttribute('width',width);
 			canvas.setAttribute('height',height);
+			canvas2.setAttribute('width',width);
+			canvas2.setAttribute('height',height);
 
 			streaming = true;
 		}
@@ -44,7 +40,9 @@ window.onload = function()
 
 	photo_button.addEventListener('click',function(e)
 	{
+		document.getElementById("save_photo").style.visibility = "visible";
 		takepicture();
+		preview();
 		e.preventDefault()
 	}, false);
 
@@ -63,7 +61,28 @@ window.onload = function()
 			canvas.width = width;
 			canvas.height = height;
 			context.drawImage(video, 0, 0, width, height);
-
+			
+		}
+	}
+	function preview()
+	{
+		const context2 = canvas2.getContext('2d');
+		if (width && height) {
+			canvas.width = width;
+			canvas.height = height;
+			context2.drawImage(video, 0, 0, width, height);
+			if (document.getElementById("emoji1").hasAttribute("src")) {
+				var emoji1 = document.getElementById("emoji1");
+				var left = parseInt(emoji1.style.left);
+				var top = parseInt(emoji1.style.top);
+				context2.drawImage(emoji1,left,top,100,100);
+			}
+			if (document.getElementById("emoji2").hasAttribute("src")) {
+				var emoji2 = document.getElementById("emoji2");
+				var left2 = parseInt(emoji2.style.left);
+				var top2 = parseInt(emoji2.style.top);
+				context2.drawImage(emoji2,left2 + 100,top2,100,100);
+			}
 		}
 	}
 
@@ -82,23 +101,20 @@ window.onload = function()
 		myoverlay.type = 'hidden';
 		myoverlay.name = 'emoji64';
 		myoverlay.value = emoji;
+		if (document.getElementById("emoji2").hasAttribute("src"))
+		{
+			var	emoji2 = document.getElementById("emoji2").src;
+			const myoverlay2 = document.createElement('input');
+			myoverlay2.type = 'hidden';
+			myoverlay2.name = 'emoji64_2';
+			myoverlay2.value = emoji2;
+			form.appendChild(myoverlay2);
+		}
 		form.appendChild(myogimage);
 		form.appendChild(myoverlay);
 		document.body.appendChild(form);
 		form.submit();
 	}
-
-
-	function ols()
-	{
-		//canvas,video
-		alert('finally');
-	}
-
-
-		///////////////////////////
-
-
 
 }
 

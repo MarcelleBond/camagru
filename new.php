@@ -18,7 +18,7 @@
 				<ul>
                     <li class="left"><a href="index.php">Home</a></li>
 					<li class="left"><a href="profile.php?user=<?php echo escape($user->data()->username);?>"><?php echo escape($user->data()->username);?></a></li>                    
-					<li class="left"><a href="new.php">NewPic</a></li>
+					<li class="left"><a href="newpic.php">NewPic</a></li>
 					<li class="right"><a href="logout.php">Log out</a></li>
 				</ul>
 			</div>

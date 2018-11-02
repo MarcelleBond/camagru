@@ -20,14 +20,15 @@
 			<ul>
 				<li class="left"><a href="index.php">Home</a></li>
 				<li class="left"><a href="profile.php?user=<?php echo escape($user->data()->username);?>"><?php echo escape($user->data()->username);?></a></li>                    
-				<li class="left"><a href="new.php">NewPic</a></li>
+				<li class="left"><a href="newpic.php">NewPic</a></li>
 				<li class="right"><a href="logout.php">Log out</a></li>
 			</ul>
 	</div>
 	<img class="logo" src="images/site_images/logo.png" alt="logo">
 	<div class="top_container">
-		<div id="overlay" class="overlay" onclick="off()">
-			<img class="text" height='100px' width='100px' id="emoji1" name="emoji1" src="images/emojis/poo.png">
+		<div id="overlay" class="overlay">
+			<img class="text" height='100px' width='100px' id="emoji1" name="emoji1" onclick="off()">
+			<img onclick="off2()" class="text" height='100px' width='100px' id="emoji2" name="emoji2"  >
 		</div>
 		<div>
 			<video id='video'>Stream not available...</video>
@@ -35,45 +36,123 @@
 		<button id="photo_button" class="btn btn_darkk">Take Photo</button>
 		<button id="save_photo" class="btn btn_darkk">save</button>
 		<canvas id="canvas"></canvas>
+		<canvas id="canvas2"></canvas>
     </div>
        
 	<div>
-		<img id="e1" src="images/emojis/penguin.png" height='100px' width='100px'>
-		<img id="e2" src="images/emojis/poo.png" height='100px' width='100px'>
+		<img id="e1" src="images/emojis/emoj_1.png" height='50px' width='50px'>
+		<img id="e2" src="images/emojis/emoj_2.png" height='50px' width='50px'>
+		<img id="e3" src="images/emojis/emoj_3.png" height='50px' width='50px'>
+		<img id="e4" src="images/emojis/emoj_4.png" height='50px' width='50px'>
+		<img id="e5" src="images/emojis/emoj_5.png" height='50px' width='50px'>
+		<img id="e6" src="images/emojis/emoj_6.png" height='50px' width='50px'>
+		<img id="e7" src="images/emojis/emoj_7.png" height='50px' width='50px'>
+		<img id="e8" src="images/emojis/emoj_8.png" height='50px' width='50px'>
+		<img id="e9" src="images/emojis/emoj_9.png" height='50px' width='50px'>
+		<img id="e10" src="images/emojis/emoj_10.png" height='50px' width='50px'>
 		<br>
 	</div>
 </body>
 
 <script>
-	function on() {
-		document.getElementById("overlay").style.display = "block";
-	}
-
+	
 	function off() {
-		document.getElementById("overlay").style.display = "none";
+		document.getElementById("emoji1").style.visibility = "hidden";
+		document.getElementById("emoji1").removeAttribute('src');
+
+	}
+	function off2() {
+		document.getElementById("emoji2").style.visibility = "hidden";
+		document.getElementById("emoji2").removeAttribute('src');
+
 	}
 
 	emo1 = document.getElementById("e1");
 	emo2 = document.getElementById("e2");
+	emo3 = document.getElementById("e3");
+	emo4 = document.getElementById("e4");
+	emo5 = document.getElementById("e5");
+	emo6 = document.getElementById("e6");
+	emo7 = document.getElementById("e7");
+	emo8 = document.getElementById("e8");
+	emo9 = document.getElementById("e9");
+	emo10 = document.getElementById("e10");
+	
 	emo1.addEventListener("click", function(){switchsrc(emo1);}, false);
 	emo2.addEventListener("click", function(){switchsrc(emo2);}, false);
+	emo3.addEventListener("click", function(){switchsrc(emo3);}, false);
+	emo4.addEventListener("click", function(){switchsrc(emo4);}, false);
+	emo5.addEventListener("click", function(){switchsrc(emo5);}, false);
+	emo6.addEventListener("click", function(){switchsrc(emo6);}, false);
+	emo7.addEventListener("click", function(){switchsrc(emo7);}, false);
+	emo8.addEventListener("click", function(){switchsrc(emo8);}, false);
+	emo9.addEventListener("click", function(){switchsrc(emo9);}, false);
+	emo10.addEventListener("click", function(){switchsrc(emo10);}, false);
 
 	function switchsrc(emonew)
 	{
-		document.getElementById("overlay").style.display = "block";
-		var emoswitch = document.getElementById("emoji1");
+		document.getElementById("emoji1").style.visibility = "visible";
+		if (document.getElementById("emoji1").hasAttribute("src"))
+		{
+			document.getElementById("emoji2").style.visibility = "visible";
+			var emoswitch = document.getElementById("emoji2");
+		}
+		else
+		{
+			var emoswitch = document.getElementById("emoji1");
+		}
 		var ovl = document.getElementById("overlay");
 		switch (emonew.id)
 		{
 			case "e1" :
 				emoswitch.setAttribute('src', emonew.src);
-				ovl.style.paddingTop = "180px";
-				ovl.style.paddingLeft = "30px";
+				emoswitch.style.top = "10px";
+				emoswitch.style.left = "10px";
 				break;
 			case "e2" :
 				emoswitch.setAttribute('src', emonew.src);
-				ovl.style.paddingTop = "170px";
-				ovl.style.paddingLeft = "70px";
+				emoswitch.style.top = "10px";
+				emoswitch.style.left = "200px";
+				break;
+			case "e3" :
+				emoswitch.setAttribute('src', emonew.src);
+				emoswitch.style.top = "10px";
+				emoswitch.style.left = "290px";
+				break;
+			case "e4" :
+				emoswitch.setAttribute('src', emonew.src);
+				emoswitch.style.top = "100px";
+				emoswitch.style.left = "10px";
+				break;
+			case "e5" :
+				emoswitch.setAttribute('src', emonew.src);
+				emoswitch.style.top = "100px";
+				emoswitch.style.left = "200px";
+				break;
+			case "e6" :
+				emoswitch.setAttribute('src', emonew.src);
+				emoswitch.style.top = "100px";
+				emoswitch.style.left = "290px";
+				break;
+			case "e7" :
+				emoswitch.setAttribute('src', emonew.src);
+				emoswitch.style.top = "250px";
+				emoswitch.style.left = "10px";
+				break;
+			case "e8" :
+				emoswitch.setAttribute('src', emonew.src);
+				emoswitch.style.top = "250px";
+				emoswitch.style.left = "200px";
+				break;
+			case "e9" :
+				emoswitch.setAttribute('src', emonew.src);
+				emoswitch.style.top = "250px";
+				emoswitch.style.left = "290px";
+				break;
+			case "e10" :
+				emoswitch.setAttribute('src', emonew.src);
+				emoswitch.style.top = "100px";
+				emoswitch.style.left = "200px";
 				break;
 		}
 	} 

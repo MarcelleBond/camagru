@@ -1,6 +1,6 @@
 #overlay {
     position: absolute;
-    display: none;
+    display: block;
     width: 20%;
     height: 20%;
     top: 100;
@@ -30,5 +30,22 @@
 
 #canvas
 {
-    display: block;
+    display: none;
+}
+
+#emoji1
+{
+    position: relative;
+    visibility: hidden;
+}
+
+#emoji2
+{
+    visibility: hidden;
+    position: relative;
+}
+
+#save_photo
+{
+    visibility: hidden;
 }
