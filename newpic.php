@@ -24,34 +24,49 @@
 				<li class="right"><a href="logout.php">Log out</a></li>
 			</ul>
 	</div>
-	<img class="logo" src="images/site_images/logo.png" alt="logo">
+	<img class="logo" src="images/site_images/logo.png" alt="logo">	
 	<div class="top_container">
 		<div id="overlay" class="overlay">
 			<img class="text" height='100px' width='100px' id="emoji1" name="emoji1" onclick="off()">
 			<img onclick="off2()" class="text" height='100px' width='100px' id="emoji2" name="emoji2"  >
 		</div>
-		<div>
+		<div class="video">
 			<video id='video'>Stream not available...</video>
 		</div>
-		<button id="photo_button" class="btn btn_darkk">Take Photo</button>
-		<button id="save_photo" class="btn btn_darkk">save</button>
-		<canvas id="canvas"></canvas>
+		<button id="photo_button" class="button">Take Photo</button>
 		<canvas id="canvas2"></canvas>
+		<button id="save_photo" class="button">save</button>
+		<canvas id="canvas"></canvas>
     </div>
-       
-	<div>
-		<img id="e1" src="images/emojis/emoj_1.png" height='50px' width='50px'>
-		<img id="e2" src="images/emojis/emoj_2.png" height='50px' width='50px'>
-		<img id="e3" src="images/emojis/emoj_3.png" height='50px' width='50px'>
-		<img id="e4" src="images/emojis/emoj_4.png" height='50px' width='50px'>
-		<img id="e5" src="images/emojis/emoj_5.png" height='50px' width='50px'>
-		<img id="e6" src="images/emojis/emoj_6.png" height='50px' width='50px'>
-		<img id="e7" src="images/emojis/emoj_7.png" height='50px' width='50px'>
-		<img id="e8" src="images/emojis/emoj_8.png" height='50px' width='50px'>
-		<img id="e9" src="images/emojis/emoj_9.png" height='50px' width='50px'>
-		<img id="e10" src="images/emojis/emoj_10.png" height='50px' width='50px'>
+	<div class="emo_list">
+		<img id="e1" src="images/emojis/emoj_1.png" height='50px' width='50px' style="margin: 17px">
+		<img id="e2" src="images/emojis/emoj_2.png" height='50px' width='50px' style="margin: 17px">
+		<img id="e3" src="images/emojis/emoj_3.png" height='50px' width='50px' style="margin: 17px">
+		<img id="e4" src="images/emojis/emoj_4.png" height='50px' width='50px' style="margin: 17px">
+		<img id="e5" src="images/emojis/emoj_5.png" height='50px' width='50px' style="margin: 17px">
+		<img id="e6" src="images/emojis/emoj_6.png" height='50px' width='50px' style="margin: 17px">
+		<img id="e7" src="images/emojis/emoj_7.png" height='50px' width='50px' style="margin: 17px">
+		<img id="e8" src="images/emojis/emoj_8.png" height='50px' width='50px' style="margin: 17px">
+		<img id="e9" src="images/emojis/emoj_9.png" height='50px' width='50px' style="margin: 17px">
+		<img id="e10" src="images/emojis/emoj_10.png" height='50px' width='50px' style="margin: 17px">
 		<br>
 	</div>
+
+	<div class="thumb_nail">
+		<?php
+			$db = DB::getInstance();
+			$db->get("gallery",array('user_id', '=', $user->data()->user_id));
+			$images = $db->results();
+            $num_images = $db->count() - 1;
+
+			for ($i=0; $i < 10 && $num_images >= 0; $i++) { 
+				$img = $images[$num_images]->img_name;
+				echo "<img src='$img' height='80px' width='80px' style='margin: 5px; margin-bottom: 1px; margin-top: 1px'>";
+				$num_images--;
+			} 
+		?>
+	</div>
+       
 </body>
 
 <script>
@@ -117,7 +132,7 @@
 			case "e3" :
 				emoswitch.setAttribute('src', emonew.src);
 				emoswitch.style.top = "10px";
-				emoswitch.style.left = "290px";
+				emoswitch.style.left = "400px";
 				break;
 			case "e4" :
 				emoswitch.setAttribute('src', emonew.src);
@@ -132,7 +147,7 @@
 			case "e6" :
 				emoswitch.setAttribute('src', emonew.src);
 				emoswitch.style.top = "100px";
-				emoswitch.style.left = "290px";
+				emoswitch.style.left = "400px";
 				break;
 			case "e7" :
 				emoswitch.setAttribute('src', emonew.src);
@@ -147,7 +162,7 @@
 			case "e9" :
 				emoswitch.setAttribute('src', emonew.src);
 				emoswitch.style.top = "250px";
-				emoswitch.style.left = "290px";
+				emoswitch.style.left = "400px";
 				break;
 			case "e10" :
 				emoswitch.setAttribute('src', emonew.src);

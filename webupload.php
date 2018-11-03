@@ -48,11 +48,13 @@
     }
     imagepng($dest, "images/gallary/user_".$user_id."_image_".$img_id.".png");
 
-    /* $db->insert('gallery', array(
+    $db->insert('gallery', array(
         'img_name' => 'images/gallary/'."user_".$user_id."_image_".$img_id.'.png',
         'user_id' => $user_id
-    )); */
-    // redirect::to("newpic.php"); 
+    ));
+    redirect::to("newpic.php"); 
+
+    
 
 
 

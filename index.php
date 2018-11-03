@@ -31,7 +31,22 @@
 			</div>
 			<img class="logo" src="images/site_images/logo.png" alt="logo">
 		</header>
-			whats good world
+
+		<div class="images">
+		<?php
+			$db = DB::getInstance();
+			$db->get("gallery",array('user_id', '=', $user->data()->user_id));
+			$images = $db->results();
+            $num_images = $db->count() - 1;
+
+			for ($i=0; $i <= $num_images; $num_images--) { 
+				$img = $images[$num_images]->img_name;
+				echo "<img src='$img' height='80px' width='80px' style='margin: 5px; margin-bottom: 1px; margin-top: 1px'>";
+				$num_images--;
+			} 
+		?>
+		</div>
+
 		<footer>
 			
 		</footer>

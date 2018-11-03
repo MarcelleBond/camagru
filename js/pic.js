@@ -41,6 +41,7 @@ window.onload = function()
 	photo_button.addEventListener('click',function(e)
 	{
 		document.getElementById("save_photo").style.visibility = "visible";
+		document.getElementById("canvas2").style.display = "block";
 		takepicture();
 		preview();
 		e.preventDefault()
@@ -48,7 +49,13 @@ window.onload = function()
 
 	save_photo.addEventListener('click',function(e)
 	{
-		savepic()
+		savepic();
+		e.preventDefault();
+	}, false);
+	canvas2.addEventListener('click',function(e)
+	{
+		document.getElementById("canvas2").style.display = "none";
+		document.getElementById("save_photo").style.visibility = "hidden";
 		e.preventDefault();
 	}, false);
 
