@@ -18,6 +18,7 @@
 			<title>Welcome</title>
 			<meta name="viewport" content="width=device-width, initial-scale=1">
 			<link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
+			<script src="js/pager.js"></script>
 		</head>
 		<body>
 		<header>
@@ -33,8 +34,17 @@
 		</header>
 
 		<div id="images" class="images">
+			<img id="eg0">
+			<img id="eg1">
+			<img id="eg2">
+			<img id="eg3">
+			<div id="controls">
+				<button onclick="prevset();">Previous</button>
+				<button onclick="nextset();">Next</button>
+				</div>
 		<?php
-			$db = DB::getInstance();
+		/* echo "<script>showPics();</script>"; */
+/* 			$db = DB::getInstance();
 			$db->get("gallery",array('user_id', '=', $user->data()->user_id));
 			$images = $db->results();
             $num_images = $db->count() - 1;
@@ -42,7 +52,7 @@
 			for ($i=0; $i <= $num_images; $num_images--) { 
 				$img = $images[$num_images]->img_name;
 				echo "<img src='$img' style='margin: 5px; margin-bottom: 1px; margin-top: 1px'>";
-			} 
+			}  */
 			?>
 		</div>
 		<footer>
