@@ -1,6 +1,10 @@
 <?php
  	require_once 'core/init.php';
-	if (Input::exists()) {
+	 $user = new user();
+
+	if(!$user->isloggedin())
+	{
+	 if (Input::exists()) {
 		if (token::check(input::get('token')))
 		{
 			$validate = new Validate();
@@ -27,8 +31,6 @@
 
 			if ($validate->passed())
 			{
-				$user = new user();
-
 				try
 				{
 					$user->create(array(
@@ -54,6 +56,11 @@
 			}
 		}
 	}
+}
+else
+{
+	redirect::to('index.php');
+}
 ?>
 
 <!DOCTYPE html>

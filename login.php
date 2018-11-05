@@ -1,6 +1,8 @@
 <?php
 	require_once 'core/init.php';
-
+	$user = new user();
+	if (!$user->isloggedin()) {
+	
 	if(input::exists())
 	{
 		if (token::check(input::get('token')))
@@ -12,7 +14,7 @@
 			));
 			if ($validation->passed())
 			{
-				$user = new user();
+				// $user = new user();
 				$login = $user->login(input::get('username'), input::get('passwd'));
 				if($login)
 				{
@@ -31,7 +33,12 @@
 				}
 			}
 		}
-	} 
+	}
+}
+else
+{
+	redirect::to('index.php');
+}
 
 ?>
 

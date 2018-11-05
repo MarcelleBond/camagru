@@ -26,8 +26,8 @@
             {
                 try{
                     $user->update(array(
-                        'username' => input::get('username'),
-                        'email' => input::get('email')
+                        'username' => escape(input::get('username')),
+                        'email' => escape(input::get('email'))
                     ));
                     session::flash('home', 'your details have been updated');
                     redirect::to('index.php');
@@ -61,7 +61,6 @@
         <label for="name">Name</label>
         <input type="text" name="username" value="<?php echo escape($user->data()->username);?>">
         <input type="email" name="email" value="<?php echo escape($user->data()->email);?>">
-
         <input type="submit" value="Update">
         <input type="hidden" name="token" value="<?php echo token::generate();?>">
     </form>

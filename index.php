@@ -23,11 +23,11 @@
 		<body>
 		<header>
 			<div class="navbar">
-				<ul class="header">
-					<li class="left"><a href="index.php">Home</a></li>
-					<li class="left"><a href="profile.php?user=<?php echo escape($user->data()->username);?>"><?php echo escape($user->data()->username);?></a></li>
-					<li class="left"><a href="newpic.php">NewPic</a></li>
-					<li class="right"><a href="logout.php">Log out</a></li>
+				<ul class='header'>
+					<li class='left'><a href='index.php'>Home</a></li>
+					<li class='left'><a href='profile.php?user=<?php echo escape($user->data()->username);?>'><?php echo escape($user->data()->username);?></a></li>
+					<li class='left'><a href='newpic.php'>NewPic</a></li>
+					<li class='right'><a href='logout.php'>Log out</a></li>
 				</ul>
 			</div>
 			<img class="logo" src="images/site_images/logo.png" alt="logo">
@@ -38,22 +38,18 @@
 			<img id="eg1">
 			<img id="eg2">
 			<img id="eg3">
+			<img id="eg4">
+			<img id="eg5">
+			<img id="eg6">
+			<img id="eg7">
+			<img id="eg8">
+			<img id="eg9">
+			<img id="eg10">
+			<img id="eg11">
 			<div id="controls">
 				<button onclick="prevset();">Previous</button>
 				<button onclick="nextset();">Next</button>
 				</div>
-		<?php
-		/* echo "<script>showPics();</script>"; */
-/* 			$db = DB::getInstance();
-			$db->get("gallery",array('user_id', '=', $user->data()->user_id));
-			$images = $db->results();
-            $num_images = $db->count() - 1;
-
-			for ($i=0; $i <= $num_images; $num_images--) { 
-				$img = $images[$num_images]->img_name;
-				echo "<img src='$img' style='margin: 5px; margin-bottom: 1px; margin-top: 1px'>";
-			}  */
-			?>
 		</div>
 		<footer>
 				<ul class="footer">

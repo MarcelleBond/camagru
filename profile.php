@@ -4,13 +4,23 @@
     if (!$username = input::get('user')) {
         redirect::to('index.php');
     } else {
-        $user = new user($username);
-        if (!$user->exists()) {
+        $user_profile = new user($username);
+
+        $user = new user();
+        if (!$user_profile->exists()) {
             redirect::to(404);
         }
         else
         {
-            $data = $user->data();
+            $data = $user_profile->data();
+        }
+        if($user->data()->username === $username)
+        {
+            echo "welcome to your profile";
+        }
+        else 
+        {
+            echo " your uing someone else's profile";
         }
         ?>
             <!DOCTYPE html>

@@ -1,4 +1,4 @@
-var picsPerPage =4;
+var picsPerPage = 12;
 var offset = 0;
 var numpics = countPics();
 //countPics();
@@ -7,7 +7,7 @@ var imagediv = document.getElementById("images");
 
 function prevset(){
 
-    offset = +offset - 2;
+    offset = +offset - picsPerPage;
     if(offset < 0)
     {
         offset = 0;
@@ -17,7 +17,7 @@ function prevset(){
 }
 
 function nextset(){
-    offset = +offset + 2;
+    offset = +offset + picsPerPage;
    // alert(offset);
     if(offset > parseInt(numpics))
     {
