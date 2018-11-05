@@ -48,7 +48,7 @@
 </head>
 <body>
 	<div class="navbar">
-		<ul>
+		<ul class="header">
 			<li class="left"><a href="index.php">Home</a></li>
 			<li class="right"><a href="register.php">Register</a></li>
 		</ul>

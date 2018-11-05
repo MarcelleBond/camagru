@@ -29,8 +29,6 @@
 					<li class="left"><a href="index.php">Home</a></li>
 					<li class="left"><a href="newpic.php">NewPic</a></li>
 					<li class="right"><a href="logout.php">Log out</a></li>
-                    <li><a class="right" href="update.php">Update details</a></li>
-                    <li><a class="right" href="changepassword.php">change password</a></li>
 				</ul>
 			</div>
                 <img class="logo" src="images/site_images/logo.png" alt="logo">

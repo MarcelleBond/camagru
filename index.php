@@ -22,7 +22,7 @@
 		<body>
 		<header>
 			<div class="navbar">
-				<ul>
+				<ul class="header">
 					<li class="left"><a href="index.php">Home</a></li>
 					<li class="left"><a href="profile.php?user=<?php echo escape($user->data()->username);?>"><?php echo escape($user->data()->username);?></a></li>
 					<li class="left"><a href="newpic.php">NewPic</a></li>
@@ -32,7 +32,7 @@
 			<img class="logo" src="images/site_images/logo.png" alt="logo">
 		</header>
 
-		<div class="images">
+		<div id="images" class="images">
 		<?php
 			$db = DB::getInstance();
 			$db->get("gallery",array('user_id', '=', $user->data()->user_id));
@@ -41,14 +41,15 @@
 
 			for ($i=0; $i <= $num_images; $num_images--) { 
 				$img = $images[$num_images]->img_name;
-				echo "<img src='$img' height='80px' width='80px' style='margin: 5px; margin-bottom: 1px; margin-top: 1px'>";
-				$num_images--;
+				echo "<img src='$img' style='margin: 5px; margin-bottom: 1px; margin-top: 1px'>";
 			} 
-		?>
+			?>
 		</div>
-
 		<footer>
-			
+				<ul class="footer">
+					<li><a href="index.php">Home</a></li>
+					<li><a href="update.php">Update Info</a></li>
+				</ul>	
 		</footer>
 		</body>
 		</html>

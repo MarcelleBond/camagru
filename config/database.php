@@ -2,6 +2,6 @@
 
 $DB_DNS= "localhost";
 $DB_USER = "root";
-$DB_PASSWORD = "";
+$DB_PASSWORD = "123456";
 
 ?>

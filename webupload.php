@@ -40,7 +40,6 @@
 
         $src = imagecreatefrompng($emo2[1]);
         $width = ImageSx($src);
-        // echo $src,"<br><br>";
 
         $height = ImageSy($src);
         pic_position($emo2);
