@@ -75,19 +75,19 @@
 
 .emo_list
 {
-    position: absolute;
-    top: 330px;
-    width: 20%;
+    align-content: center;
 }
 .thumb_nail
 {
-    position: absolute;
-    top: 335px;
-    left: 70%;
-    width: 20%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    overflow: hidden;
 }
 
-.main_container
+.thumb_nail img
 {
- 
+    width: 100%;
+    border: #FFF 3px solid;
 }
+

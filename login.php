@@ -1,7 +1,11 @@
 <?php
 	require_once 'core/init.php';
+	
 	$user = new user();
-	if (!$user->isloggedin()) {
+	
+	if ($user->isloggedin()) {
+		redirect::to('index.php');
+	}
 	
 	if(input::exists())
 	{
@@ -34,12 +38,6 @@
 			}
 		}
 	}
-}
-else
-{
-	redirect::to('index.php');
-}
-
 ?>
 
 <!DOCTYPE html>

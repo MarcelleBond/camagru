@@ -12,18 +12,22 @@ function prevset(){
     {
         offset = 0;
     }
-    alert(offset);
-    countPics();
+    // alert(offset);
+//    alert(picsPerPage);
+
+    // countPics();
+    fetchPics();
 }
 
 function nextset(){
     offset = +offset + picsPerPage;
    // alert(offset);
-    if(offset > parseInt(numpics))
+    /* if(offset > parseInt(numpics))
     {
         offset = 0;
-    }
-   // alert(offset);
+    } */
+//    alert(offset);
+//    alert(picsPerPage);
     //countPics();
     fetchPics();
 }
@@ -48,7 +52,7 @@ function countPics()
 
 function fetchPics()
 {
-    alert("fetching");
+    // alert("fetching");
     var hr = new XMLHttpRequest();
     var url = "ajax.php";
 
@@ -63,14 +67,27 @@ function fetchPics()
           queryRes = JSON.parse(return_data);
           console.log(queryRes);
           arrLength = queryRes.length;
-
+          var myNode = document.getElementById("images");
+          while (myNode.firstChild) {
+              myNode.removeChild(myNode.firstChild);
+          }
            for(var i= 0;i < arrLength; i++)
           {
-              document.getElementById("eg"+i).setAttribute('src',queryRes[i]['img_name']);
+              var img = document.createElement('img'); 
+              img.setAttribute('id',"eg"+i);
+              img.setAttribute('src',queryRes[i]['img_name']);
+              img.setAttribute('onclick','alert("hi")');
+              myNode.appendChild(img);
+
           } 
          // alert(arrLength);
          
      }
 }
 hr.send(vars);
+}
+
+window.onload = function()
+{
+    fetchPics();
 }

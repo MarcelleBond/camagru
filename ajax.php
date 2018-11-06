@@ -19,7 +19,7 @@ function homegallery()
 {
     $db = DB::getInstance();
    // $db->get("gallery",array('user_id', '=', $user->data()->user_id));
-    $db->query("SELECT * FROM gallery ORDER BY time_stamp ASC LIMIT ".$_POST['limit']." OFFSET ".$_POST['offset']);
+    $db->query("SELECT * FROM gallery ORDER BY time_stamp DESC LIMIT ".$_POST['limit']." OFFSET ".$_POST['offset']);
     $images = $db->results();
     $num_images = $db->count() - 1;
     echo json_encode($images);

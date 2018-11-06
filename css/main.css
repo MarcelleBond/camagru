@@ -1,3 +1,10 @@
+body
+{
+    background-image: url('../images/site_images/background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 .navbar{
     width: 100%;
     align-items: center;
@@ -48,4 +55,18 @@ li a:hover {
     overflow: hidden;
     background-color: #333;
     text-align: left;
+}
+
+.photo
+{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    overflow: hidden;
+}
+
+.photo img
+{
+    width: 100%;
+    border: #FFF 3px solid;
 }

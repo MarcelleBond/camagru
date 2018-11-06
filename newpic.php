@@ -2,7 +2,9 @@
 	require_once 'core/init.php';
 
 	$user = new user;
-	if ($user->isloggedin()) {
+	if (!$user->isloggedin()) {
+		redirect::to('index.php');
+	}
 ?>
 
 <!DOCTYPE html>
@@ -35,12 +37,7 @@
 			<div class="video">
 				<video id='video'>Stream not available...</video>
 			</div>
-			<button id="photo_button" class="button">Take Photo</button>
-			<canvas id="canvas2"></canvas>
-			<button id="save_photo" class="button">save</button>
-			<canvas id="canvas"></canvas>
-		</div>
-		<div class="emo_list">
+			<div class="emo_list">
 			<img id="e1" src="images/emojis/emoj_1.png" height='50px' width='50px' style="margin: 17px">
 			<img id="e2" src="images/emojis/emoj_2.png" height='50px' width='50px' style="margin: 17px">
 			<img id="e3" src="images/emojis/emoj_3.png" height='50px' width='50px' style="margin: 17px">
@@ -53,6 +50,12 @@
 			<img id="e10" src="images/emojis/emoj_10.png" height='50px' width='50px' style="margin: 17px">
 			<br>
 		</div>
+			<button id="photo_button" class="button">Take Photo</button>
+			<canvas id="canvas2"></canvas>
+			<button id="save_photo" class="button">save</button>
+			<canvas id="canvas"></canvas>
+		</div>
+		
 
 		<div class="thumb_nail">
 			<?php
@@ -61,9 +64,9 @@
 				$images = $db->results();
 				$num_images = $db->count() - 1;
 
-				for ($i=0; $i < 10 && $num_images >= 0; $i++) { 
+				for ($i=0; $i < 3 && $num_images >= 0; $i++) { 
 					$img = $images[$num_images]->img_name;
-					echo "<img src='$img' height='80px' width='80px' style='margin: 5px; margin-bottom: 1px; margin-top: 1px'>";
+					echo "<img src='$img' style='margin: 5px; margin-bottom: 1px; margin-top: 1px'>";
 					$num_images--;
 				} 
 			?>
@@ -175,11 +178,4 @@
 		}
 	} 
 </script>
-
 </html>
-<?php
-	}
-	else{
-		redirect::to('index.php');
-	}
-?>
