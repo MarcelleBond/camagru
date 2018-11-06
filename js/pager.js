@@ -22,10 +22,10 @@ function prevset(){
 function nextset(){
     offset = +offset + picsPerPage;
    // alert(offset);
-    /* if(offset > parseInt(numpics))
+    if(offset > parseInt(numpics))
     {
         offset = 0;
-    } */
+    }
 //    alert(offset);
 //    alert(picsPerPage);
     //countPics();
