@@ -39,7 +39,6 @@
 			<script src="js/pager.js"></script>
 		</head>
 		<body>
-		<header>
 			<div class="navbar">
 			<?php
 				if ($user->isloggedin()) {
@@ -51,19 +50,17 @@
 			?>
 			</div>
 			<img class="logo" src="images/site_images/logo.png" alt="logo">
-		</header>
-
 		<div id="images" class="photo">
 		</div>
-				<div id="controls">
-					<button id="prev" onclick="prevset();">Previous</button>
-					<button id="next" onclick="nextset();">Next</button>
-					</div>
-		<footer>
+		<div id="controls">
+			<button id="prev" onclick="prevset();">Previous</button>
+			<button id="next" onclick="nextset();">Next</button>
+		</div>
+		<div class="footer">
 				<ul class="footer">
 					<li><a href="index.php">Home</a></li>
 					<li><a href="update.php">Update Info</a></li>
 				</ul>	
-		</footer>
+		</div>
 		</body>
 		</html>
