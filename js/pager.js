@@ -1,7 +1,6 @@
 var picsPerPage = 12;
 var offset = 0;
 var numpics = countPics();
-//countPics();
 var numPages = Math.ceil(numpics/picsPerPage);
 var imagediv = document.getElementById("images");
 
@@ -12,10 +11,6 @@ function prevset(){
     {
         offset = 0;
     }
-    // alert(offset);
-//    alert(picsPerPage);
-
-    // countPics();
     fetchPics();
 }
 
@@ -26,9 +21,6 @@ function nextset(){
     {
         offset = 0;
     }
-//    alert(offset);
-//    alert(picsPerPage);
-    //countPics();
     fetchPics();
 }
 
@@ -43,7 +35,6 @@ function countPics()
  hr.onreadystatechange = function() {
      if(hr.readyState == 4 && hr.status == 200) {
          var return_data = hr.responseText;
-          //alert(return_data);
           numpics = return_data;
      }
  }
@@ -52,7 +43,6 @@ function countPics()
 
 function fetchPics()
 {
-    // alert("fetching");
     var hr = new XMLHttpRequest();
     var url = "ajax.php";
 
@@ -65,7 +55,8 @@ function fetchPics()
           
           //append or switch src
           queryRes = JSON.parse(return_data);
-          console.log(queryRes);
+          //alert(queryRes);
+          //console.log(queryRes);
           arrLength = queryRes.length;
           var myNode = document.getElementById("images");
           while (myNode.firstChild) {

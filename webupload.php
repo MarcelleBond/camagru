@@ -23,12 +23,9 @@
 
     if(!empty($_POST["emoji64"]))
     {
-        
-        $emo = explode ('camagru/',$_POST["emoji64"]);
-        
+        $emo = explode ('camagru/',$_POST["emoji64"]);   
         $src = imagecreatefrompng($emo[1]);
         $width = ImageSx($src);
-
         $height = ImageSy($src);
         pic_position($emo);
         ImageCopyResampled($dest,$src,$pos2,$pos1,0,0,$x,$y,$width,$height);
@@ -37,14 +34,13 @@
     if(!empty($_POST["emoji64_2"]))
     {
         $emo2 = explode ('camagru/',$_POST["emoji64_2"]);
-
         $src = imagecreatefrompng($emo2[1]);
         $width = ImageSx($src);
-
         $height = ImageSy($src);
         pic_position($emo2);
         ImageCopyResampled($dest,$src,$pos2,$pos1,0,0,$x,$y,$width,$height);
     }
+    
     imagepng($dest, "images/gallary/user_".$user_id."_image_".$img_id.".png");
 
     $db->insert('gallery', array(

@@ -25,7 +25,6 @@
 
 	require_once 'functions/sanitize.php';
 	require_once 'functions/headerview.php';
-	require_once 'functions/updateprofile.php';
 
  	 if(cookie::exists(config::get('remember/cookie_name')) && !session::exists(config::get('session/session_name')))
 	{

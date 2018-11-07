@@ -8,7 +8,7 @@ window.onload = function()
 	const video = document.getElementById('video');
 	const canvas1 = document.getElementById('canvas');
 	const canvas2 = document.getElementById('canvas2');
-	const photos = document.getElementById('photos');
+	// const photos = document.getElementById('photos');
 	const photo_button = document.getElementById('photo_button');
 	const save_photo = document.getElementById('save_photo');
 

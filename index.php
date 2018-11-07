@@ -2,12 +2,12 @@
  	require_once 'core/init.php';
 
 
-	if(session::exists("home"))
+	/* if(session::exists("home"))
 	{
 		echo '<p>' . session::flash('home') .'<p>';
-	}
+	} */
 
-	$user = new user();
+	 $user = new user();
 	
 ?>
 		<!DOCTYPE html>
