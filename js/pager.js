@@ -76,7 +76,7 @@ function fetchPics()
               var img = document.createElement('img'); 
               img.setAttribute('id',"eg"+i);
               img.setAttribute('src',queryRes[i]['img_name']);
-              img.setAttribute('onclick','alert("hi")');
+              img.setAttribute('onclick','alert(this.id)');
               myNode.appendChild(img);
 
           } 

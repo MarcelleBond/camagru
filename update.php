@@ -53,16 +53,48 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css" /> -->
+    <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="css/updatepage.css" />
     <!-- <script src="main.js"></script> -->
 </head>
 <body>
-    <form action="" method="post">
-        <label for="name">Name</label>
-        <input type="text" name="username" value="<?php echo escape($user->data()->username);?>">
-        <input type="email" name="email" value="<?php echo escape($user->data()->email);?>">
-        <input type="submit" value="Update">
-        <input type="hidden" name="token" value="<?php echo token::generate();?>">
-    </form>
+    <div class="navbar">
+        <?php
+            if ($user->isloggedin()) {
+                loggedin();
+            }
+            else{
+                notloggedin();
+            }
+        ?>
+    </div>
+    <img class="logo" src="images/site_images/logo.png" alt="logo">
+        <div class="login_box1">
+            <form action="#" method="post" autocomplete="off">
+                <h1 class='current'>Update Username</h1>
+                <input class="input_area" id="username" type="text" name="username" placeholder="New Username">
+                <input type="hidden" name="token" value="<?php echo token::generate(); ?>" >
+                <input class="button" type="submit" value="Update">
+            </form>
+        </div>
+        <div class="login_box2">
+            <form action="#" method="post" autocomplete="off">
+                <h1 class='current'>Update Email</h1>
+                <input class="input_area" type="email" name="email" placeholder="New Email">    
+                <input class="input_area" type="email" name="email_again" placeholder="Confirm New Email">    
+                <input type="hidden" name="token" value="<?php echo token::generate(); ?>" >
+                <input class="button" type="submit" value="Update">
+            </form>
+        </div>
+        <div class="login_box3">
+            <form action="#" method="post">
+                <h1 class='current'>Update Password</h1>
+                <input class="input_area" type="password" name="passwd_current" id="passwd_current" placeholder="current password"> <br>
+                <input class="input_area" type="password" name="passwd_new" id="passwd_new" placeholder="new password"> <br>
+                <input class="input_area" type="password" name="passwd_new_again" id="passwd_new_again" placeholder="repeat new password"> <br>
+                <input class="button" type="submit" value="Update"> <br>
+                <input type="hidden" name="token" value="<?php echo token::generate(); ?>" >
+            </form>
+        </div>
 </body>
 </html>

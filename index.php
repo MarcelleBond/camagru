@@ -9,24 +9,6 @@
 
 	$user = new user();
 	
-	function loggedin()
-	{
-		Global $user;
-		echo "<ul class='header'>
-		<li class='left'><a href='index.php'>Home</a></li>
-		<li class='left'><a href='profile.php?user=".$user->data()->username."'>".$user->data()->username."</a></li>
-		<li class='left'><a href='newpic.php'>NewPic</a></li>
-		<li class='right'><a href='logout.php'>Log out</a></li>
-		</ul>";
-	}
-	function notloggedin()
-	{
-		echo "<ul>
-				<li class='left'><a href='index.php'>Home</a></li>
-				<li class='right'><a href='register.php'>Register</a></li>
-				<li class='right'><a href='login.php'>Log in</a></li>
-			</ul>";
-	}
 ?>
 		<!DOCTYPE html>
 		<html>
@@ -57,10 +39,15 @@
 			<button id="next" onclick="nextset();">Next</button>
 		</div>
 		<div class="footer">
+			<p class='right' style="color: white">&copymbond</p>	
 				<ul class="footer">
 					<li><a href="index.php">Home</a></li>
-					<li><a href="update.php">Update Info</a></li>
-				</ul>	
+					<?php
+						if ($user->isloggedin()) {
+							echo "<li><a href='update.php'>Update Info</a></li>";
+						}
+					?>
+				</ul>
 		</div>
 		</body>
 		</html>
