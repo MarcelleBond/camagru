@@ -51,7 +51,7 @@
 
 #save_photo
 {
-    visibility: hidden;
+    display: none
 }
 
 .button
@@ -71,12 +71,16 @@
 
 .button:hover{
     background: #111;
+    cursor: pointer;
+
 }
 
 .emo_list
 {
     align-content: center;
+    padding-left: 18px;
 }
+
 .thumb_nail
 {
     display: grid;
@@ -91,3 +95,54 @@
     border: #FFF 3px solid;
 }
 
+.file-upload {
+	position: relative;
+	display: block;
+}
+
+/* .file-upload__label {
+  display: block;
+  padding: 1em 2em;
+  color: #fff;
+  background:  #333;
+  width: 100%;
+
+}
+
+.file-upload__label:hover {
+    cursor: pointer;
+    background: #111;
+} */
+
+.file-upload__input {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    font-size: 1;
+    width:0;
+    height: 100%;
+    opacity: 0;
+}
+
+.lbbutton
+{
+    font-family: "Roboto", sans-serif;
+    text-transform: uppercase;
+    background:  #333;
+    width: 100%;
+    border: 0px;
+    padding: 15px;
+    color: #FFFFFF;
+    font-size: 14px;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.lbbutton:hover{
+    background: #111;
+    cursor: pointer;
+
+}

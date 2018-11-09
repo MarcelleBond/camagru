@@ -1,6 +1,8 @@
 <?php
 include "core/init.php";
 $user = new user();
+$db = DB::getInstance();
+
 
 if(isset($_POST['img_page']))
 {
@@ -20,8 +22,6 @@ if(isset($_POST['offset']))
 }
 if(isset($_POST['email']))
 {
-
-
     emailupdate2();
 } 
 if(isset($_POST['passwd_new']) && isset($_POST['passwd_current']) && isset($_POST['passwd_new_again']))
@@ -29,12 +29,16 @@ if(isset($_POST['passwd_new']) && isset($_POST['passwd_current']) && isset($_POS
 
     passwordupdate2();
 }
+if (isset($_POST['file'])) 
+{
+    saveupload();
+}
 
 
 
 function homegallery()
 {
-    $db = DB::getInstance();
+    global $db;
     $db->query("SELECT * FROM gallery ORDER BY time_stamp DESC LIMIT ".$_POST['limit']." OFFSET ".$_POST['offset']);
     $images = $db->results();
     $num_images = $db->count() - 1;
@@ -44,7 +48,7 @@ function homegallery()
 //count images
 function imgCount()
 {
-    $db = DB::getInstance();
+    global $db;
     $db->query("SELECT * FROM gallery");
     $images = $db->results();
     $num_images = $db->count() - 1;
@@ -89,8 +93,7 @@ function passwordupdate2()
                     $user->update(array(
                         'passwd' => hash::make(input::get('passwd_new'))
                     ));
-                    /* session::flash('home', 'Your password was updated');
-                    redirect::to('index.php'); */
+                    echo "Password update successfully successful";
                 }
             } else {
                 foreach ($validation->errors() as $error) {
@@ -122,9 +125,7 @@ function passwordupdate2()
 						$user->update(array(
 							'username' => escape(input::get('username')),
 						));
-						/* session::flash('home', 'your details have been updated');
-                        redirect::to('index.php'); */
-                        echo "username updated";
+                        echo "Username update successfully successful";
 					}
 					catch(Exception $e)
 					{
@@ -163,8 +164,6 @@ function passwordupdate2()
 						$user->update(array(
 							'email' => escape(input::get('email'))
 						));
-/* 						 session::flash('home', 'Your password was updated');
-                        redirect::to('index.php');  */
                         echo "Email update successfully successful";
 					
 				} else {
@@ -175,6 +174,14 @@ function passwordupdate2()
 				
 			
 		}
-	}
+    }
+    
+    function saveupload()
+    {
+        global $user;
+
+        echo $_POST['file'];
+       move( $_POST['file'], "images/temp/user_". $user->data()->user_id."temp1.png");
+    }
 
 ?>

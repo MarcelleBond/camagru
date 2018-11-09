@@ -38,19 +38,21 @@
 				<video id='video'>Stream not available...</video>
 			</div>
 			<div class="emo_list">
-			<img id="e1" src="images/emojis/emoj_1.png" height='50px' width='50px' style="margin: 17px">
-			<img id="e2" src="images/emojis/emoj_2.png" height='50px' width='50px' style="margin: 17px">
-			<img id="e3" src="images/emojis/emoj_3.png" height='50px' width='50px' style="margin: 17px">
-			<img id="e4" src="images/emojis/emoj_4.png" height='50px' width='50px' style="margin: 17px">
-			<img id="e5" src="images/emojis/emoj_5.png" height='50px' width='50px' style="margin: 17px">
-			<img id="e6" src="images/emojis/emoj_6.png" height='50px' width='50px' style="margin: 17px">
-			<img id="e7" src="images/emojis/emoj_7.png" height='50px' width='50px' style="margin: 17px">
-			<img id="e8" src="images/emojis/emoj_8.png" height='50px' width='50px' style="margin: 17px">
-			<img id="e9" src="images/emojis/emoj_9.png" height='50px' width='50px' style="margin: 17px">
-			<img id="e10" src="images/emojis/emoj_10.png" height='50px' width='50px' style="margin: 17px">
+			<img id="e1" src="images/emojis/emoj_1.png" height='50px' width='50px' style="margin: 19px">
+			<img id="e2" src="images/emojis/emoj_2.png" height='50px' width='50px' style="margin: 19px">
+			<img id="e3" src="images/emojis/emoj_3.png" height='50px' width='50px' style="margin: 19px">
+			<img id="e4" src="images/emojis/emoj_4.png" height='50px' width='50px' style="margin: 19px">
+			<img id="e5" src="images/emojis/emoj_5.png" height='50px' width='50px' style="margin: 19px">
+			<img id="e6" src="images/emojis/emoj_6.png" height='50px' width='50px' style="margin: 19px">
+			<img id="e7" src="images/emojis/emoj_7.png" height='50px' width='50px' style="margin: 19px">
+			<img id="e8" src="images/emojis/emoj_8.png" height='50px' width='50px' style="margin: 19px">
+			<img id="e9" src="images/emojis/emoj_9.png" height='50px' width='50px' style="margin: 19px">
+			<img id="e10" src="images/emojis/emoj_10.png" height='50px' width='50px' style="margin: 19px">
 			<br>
-		</div>
+			</div>
 			<button id="photo_button" class="button">Take Photo</button>
+			<button id="Uploadbtn" class="button">Upload</button>
+			<input type="file" id="fileupload" style="display: none" accept="image/*">
 			<canvas id="canvas2"></canvas>
 			<button id="save_photo" class="button">save</button>
 			<canvas id="canvas"></canvas>

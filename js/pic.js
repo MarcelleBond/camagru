@@ -8,9 +8,9 @@ window.onload = function()
 	const video = document.getElementById('video');
 	const canvas1 = document.getElementById('canvas');
 	const canvas2 = document.getElementById('canvas2');
-	// const photos = document.getElementById('photos');
 	const photo_button = document.getElementById('photo_button');
 	const save_photo = document.getElementById('save_photo');
+	const uploadbtn = document.getElementById('Uploadbtn');
 
 	navigator.mediaDevices.getUserMedia({video: true, audio: false})
 
@@ -40,7 +40,7 @@ window.onload = function()
 
 	photo_button.addEventListener('click',function(e)
 	{
-		document.getElementById("save_photo").style.visibility = "visible";
+		document.getElementById("save_photo").style.display = "block";
 		document.getElementById("canvas2").style.display = "block";
 		takepicture();
 		preview();
@@ -55,7 +55,7 @@ window.onload = function()
 	canvas2.addEventListener('click',function(e)
 	{
 		document.getElementById("canvas2").style.display = "none";
-		document.getElementById("save_photo").style.visibility = "hidden";
+		document.getElementById("save_photo").style.display = "none";
 		e.preventDefault();
 	}, false);
 
@@ -123,7 +123,42 @@ window.onload = function()
 		form.submit();
 	}
 
+	/* document.getElementById("testme").addEventListener('click', function()
+	{
+		alert("Qwerty");
+	}) */
+
+	uploadbtn.addEventListener('click', function()
+	{
+		imageupload = document.getElementById("fileupload");
+		imageupload.click();
+		imageupload.addEventListener('change',function(){
+			// console.log(imageupload.files[0]);
+			// alert(document.getElementById("fileupload").value);
+			var hr = new XMLHttpRequest();
+			var url = "ajax.php";
+			var data = new FormData();
+			// File selected by the user
+			// In case of multiple files append each of them
+			data.append('file', imageupload.files[0]);
+			
+			// newimg =  imageupload.value;
+			// var vars = "newimg="+newimg;
+			hr.open("POST", url, true);
+			// hr.setRequestHeader("Content-type", "multipart/form-data");
+			// hr.setRequestHeader("X-File-Name", "temp");
+			hr.onreadystatechange = function() {
+			if(hr.readyState == 4 && hr.status == 200) {
+				var return_data = hr.responseText;
+				alert(return_data);
+				//   document.getElementById("userres").innerHTML = return_data;
+			}
+			}
+			hr.send(data);
+			});
+ 	 
+	}, false);
 }
 
-
+	
 

@@ -47,6 +47,8 @@
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
+    cursor: pointer;
+
 }
 
 .navbar li a:hover {
@@ -122,6 +124,8 @@ button
 
 button:hover{
     background: #111;
+    cursor: pointer;
+
 }
 
 #next
@@ -161,7 +165,9 @@ button:hover{
     text-align: left;
     padding: 14px 16px;
     text-decoration: none;
-    width: 100%
+    width: 100%;
+    cursor: pointer;
+
 
 }
 

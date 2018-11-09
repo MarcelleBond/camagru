@@ -49,12 +49,6 @@
     ));
     redirect::to("newpic.php"); 
 
-    
-
-
-
-
-
 
     function pic_position($emo)
     {
