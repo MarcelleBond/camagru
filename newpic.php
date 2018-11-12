@@ -23,7 +23,7 @@
 			<ul>
 				<li class="left"><a href="index.php">Home</a></li>
 				<li class="left"><a href="profile.php?user=<?php echo escape($user->data()->username);?>"><?php echo escape($user->data()->username);?></a></li>                    
-				<li class="left"><a href="newpic.php">NewPic</a></li>
+				<li><h1 class='camagru'>camagru</h1></li>
 				<li class="right"><a href="logout.php">Log out</a></li>
 			</ul>
 	</div>
@@ -35,7 +35,8 @@
 				<img onclick="off2()" class="text" height='100px' width='100px' id="emoji2" name="emoji2"  >
 			</div>
 			<div class="video">
-				<video id='video'>Stream not available...</video>
+				<img class="uploaded_image" height='375px' width='500px' id="uploaded_image" name="uploaded_image">
+				<video class="video" id='video'>Stream not available...</video>
 			</div>
 			<div class="emo_list">
 			<img id="e1" src="images/emojis/emoj_1.png" height='50px' width='50px' style="margin: 19px">

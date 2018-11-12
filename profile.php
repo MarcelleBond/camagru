@@ -37,7 +37,8 @@
             <div class="navbar">
 				<ul>
 					<li class="left"><a href="index.php">Home</a></li>
-					<li class="left"><a href="newpic.php">NewPic</a></li>
+                    <li class="left"><a href="newpic.php">NewPic</a></li>
+                    <li><h1 class='camagru'>camagru</h1></li>                    
 					<li class="right"><a href="logout.php">Log out</a></li>
 				</ul>
 			</div>
