@@ -2,17 +2,6 @@
 /* THIS PART IS FOR THE HEADER */
 /*******************************/
 
-/* .camagru
-{
-    color: white;
-    text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
-    text-align: center;
-    margin: 0;
-    padding: 3px;
-    position: absolute;
-    left: 600px;
-} */
-
 .navbar{
     width: 100%;
     align-items: center;
@@ -90,7 +79,6 @@
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 10px;
     overflow: hidden;
-    /* width: 50% */
 }
 
 .photo img
@@ -110,7 +98,6 @@ button
     font-family: "Roboto", sans-serif;
     text-transform: uppercase;
     background:  #333;
-    /* width: 100%; */
     border: 0px;
     padding: 15px;
     color: #FFFFFF;
@@ -171,4 +158,9 @@ button:hover{
 
 .footer li a:hover {
     background-color: #111;
+}
+
+.footer p
+{
+    margin: 5px;
 }

@@ -4,34 +4,37 @@ $user = new user();
 $db = DB::getInstance();
 
 
-if(isset($_POST['img_page']))
+if(isset($_POST['offset2']))
 {
-    homegallery();
+    profilegallery();
 }
-if(isset($_POST['picCounter']))
+else if(isset($_POST['picCounter']))
 {
     imgCount();
 }
-if(isset($_POST['offset']))
+else if(isset($_POST['picCounter2']))
+{
+    imgCount2();
+}
+else if(isset($_POST['offset']))
 {
     homegallery();
 }
- if(isset($_POST['username']))
+else if(isset($_POST['username']))
 {
     usernameupdate2();
 }
-if(isset($_POST['email']))
+else if(isset($_POST['email']))
 {
     emailupdate2();
 } 
-if(isset($_POST['passwd_new']) && isset($_POST['passwd_current']) && isset($_POST['passwd_new_again']))
+else if(isset($_POST['passwd_new']) && isset($_POST['passwd_current']) && isset($_POST['passwd_new_again']))
 {
-
     passwordupdate2();
 }
-if (isset($_POST['file'])) 
+else
 {
-    saveupload();
+    redirect::to('index.php');
 }
 
 
@@ -45,11 +48,29 @@ function homegallery()
     echo json_encode($images);
 }
 
+function profilegallery()
+{
+    global $db, $user;
+    $db->query("SELECT * FROM gallery WHERE `user_id` =".$user->data()->user_id." ORDER BY time_stamp DESC LIMIT ".$_POST['limit']." OFFSET ".$_POST['offset2']);
+    $images = $db->results();
+    $num_images = $db->count() - 1;
+    echo json_encode($images);
+}
+
 //count images
 function imgCount()
 {
     global $db;
     $db->query("SELECT * FROM gallery");
+    $images = $db->results();
+    $num_images = $db->count() - 1;
+    echo intval($num_images); 
+}
+
+function imgCount2()
+{
+    global $db, $user;
+    $db->query("SELECT * FROM gallery WHERE `user_id` = ".$user->data()->user_id."");
     $images = $db->results();
     $num_images = $db->count() - 1;
     echo intval($num_images); 
@@ -93,7 +114,7 @@ function passwordupdate2()
                     $user->update(array(
                         'passwd' => hash::make(input::get('passwd_new'))
                     ));
-                    echo "Password update successfully successful";
+                    echo "Password update successfully";
                 }
             } else {
                 foreach ($validation->errors() as $error) {
@@ -125,7 +146,7 @@ function passwordupdate2()
 						$user->update(array(
 							'username' => escape(input::get('username')),
 						));
-                        echo "Username update successfully successful";
+                        echo "Username update successfully";
 					}
 					catch(Exception $e)
 					{
@@ -164,7 +185,7 @@ function passwordupdate2()
 						$user->update(array(
 							'email' => escape(input::get('email'))
 						));
-                        echo "Email update successfully successful";
+                        echo "Email update successfully";
 					
 				} else {
 					foreach ($validation->errors() as $error) {
@@ -174,14 +195,6 @@ function passwordupdate2()
 				
 			
 		}
-    }
-    
-    function saveupload()
-    {
-        global $user;
-
-        echo $_POST['file'];
-       move( $_POST['file'], "images/temp/user_". $user->data()->user_id."temp1.png");
     }
 
 ?>

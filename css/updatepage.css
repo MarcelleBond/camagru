@@ -8,6 +8,7 @@
     padding: 45px;
     text-align: center;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    box-sizing: unset;
 }
 
 .login_box2
@@ -20,6 +21,7 @@
     padding: 45px;
     text-align: center;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    box-sizing: unset;
 }
 
 .login_box3
@@ -32,6 +34,7 @@
     padding: 45px;
     text-align: center;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    box-sizing: unset;
 }
 
 .input_area
@@ -73,4 +76,9 @@
     margin: 0;
     padding: 3px;
     width: 100%
+}
+
+.message
+{
+    color: white;
 }

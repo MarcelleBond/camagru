@@ -40,3 +40,8 @@
 .button:hover{
     background: #111;
 }
+
+.message
+{
+    color: white;
+}

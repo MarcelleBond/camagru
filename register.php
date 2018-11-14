@@ -92,5 +92,16 @@ else
 			<input class="button" type="submit" value="register">
 		</form>
 	</div>
+	<div class="footer">
+		<p class='right' style="color: white">&copymbond</p>	
+		<ul class="footer">
+			<li><a href="index.php">Home</a></li>
+			<?php
+				if ($user->isloggedin()) {
+					echo "<li><a href='update.php'>Update Info</a></li>";
+				}
+			?>
+		</ul>
+	</div>
 </body>
 </html>

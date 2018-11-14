@@ -14,7 +14,8 @@
     $imgnum = $db->get("gallery",array('user_id', '=', $user->data()->user_id));
     $img_id = $imgnum->count() + 1;
     $user_id = $user->data()->user_id;
-    
+    if(!isset($_POST["img64"]))
+        redirect::to("newpic.php");
     $data = explode( ',', $_POST["img64"] );
     $test = base64_decode($data[1]);
     

@@ -32,9 +32,13 @@
 			}
 			else
 			{
-				foreach ($validation->errors() as $error) {
+				function error()
+				{
+					global $validation;
+					foreach ($validation->errors() as $error) {
 					echo $error, '<br>';
 				}
+			}
 			}
 		}
 	}
@@ -61,12 +65,23 @@
 	<img class="logo" src="images/site_images/logo.png" alt="logo">
 	<div class="login_box">
 		<form action="" method="post" autocomplete="off">
-			<input type="text" class="input_area" name="username" id="username" placeholder="Username" required> <br>
+			<input type="text" class="input_area" name="username" id="username" placeholder="Username" > <br>
 			<input type="password" class="input_area" name="passwd" id="passwd" placeholder="Password" required> <br>
 			<input type="hidden" name="token" value="<?php echo token::generate(); ?>" >
+			<p id="login_error" class="message"><?php error(); ?></p>
 			<input type="submit" class="button" name="submit" id="submit" value="Login">
 		</form>
-
+	</div>
+	<div class="footer">
+		<p class='right' style="color: white">&copymbond</p>	
+		<ul class="footer">
+			<li><a href="index.php">Home</a></li>
+			<?php
+				if ($user->isloggedin()) {
+					echo "<li><a href='update.php'>Update Info</a></li>";
+				}
+			?>
+		</ul>
 	</div>
 </body>
 </html>

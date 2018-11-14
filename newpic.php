@@ -20,12 +20,14 @@
 </head>
 <body>
 	<div class="navbar">
-			<ul>
-				<li class="left"><a href="index.php">Home</a></li>
-				<li class="left"><a href="profile.php?user=<?php echo escape($user->data()->username);?>"><?php echo escape($user->data()->username);?></a></li>                    
-				<li><h1 class='camagru'>camagru</h1></li>
-				<li class="right"><a href="logout.php">Log out</a></li>
-			</ul>
+	<?php
+            if ($user->isloggedin()) {
+                loggedin();
+            }
+            else{
+                notloggedin();
+            }
+        ?>
 	</div>
 	<img class="logo" src="images/site_images/logo.png" alt="logo">	
 	<div class="main_container">
@@ -75,7 +77,17 @@
 			?>
 		</div>
 	</div>
-       
+    <div class="footer">
+		<p class='right' style="color: white">&copymbond</p>	
+		<ul class="footer">
+			<li><a href="index.php">Home</a></li>
+			<?php
+				if ($user->isloggedin()) {
+					echo "<li><a href='update.php'>Update Info</a></li>";
+				}
+			?>
+		</ul>
+	</div>
 </body>
 
 <script>

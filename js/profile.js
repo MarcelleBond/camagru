@@ -25,7 +25,7 @@ function countPics() {
     var hr = new XMLHttpRequest();
     var url = "ajax.php";
 
-    var vars = "picCounter=SHO";
+    var vars = "picCounter2=SHO";
     hr.open("POST", url, true);
     hr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     hr.onreadystatechange = function () {
@@ -41,7 +41,7 @@ function fetchPics() {
     var hr = new XMLHttpRequest();
     var url = "ajax.php";
 
-    var vars = "offset=" + offset + "&limit=" + picsPerPage;
+    var vars = "offset2=" + offset + "&limit=" + picsPerPage;
     hr.open("POST", url, true);
     hr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     hr.onreadystatechange = function () {
@@ -51,7 +51,7 @@ function fetchPics() {
             //append or switch src
             queryRes = JSON.parse(return_data);
             //alert(queryRes);
-            //console.log(queryRes);
+            console.log(queryRes);
             arrLength = queryRes.length;
             var myNode = document.getElementById("images");
             while (myNode.firstChild) {

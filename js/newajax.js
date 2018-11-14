@@ -6,7 +6,6 @@ function updPass()
     curpass =  document.getElementById("passwd_current").value;
     newpass =document.getElementById("passwd_new").value;
     newpassag =document.getElementById("passwd_new_again").value;
-    alert(curpass+newpass+newpassag);
     var vars = "passwd_new="+newpass+"&passwd_new_again="+newpassag+"&passwd_current="+curpass+"";
     hr.open("POST", url, true);
     hr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
