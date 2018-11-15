@@ -1,9 +1,8 @@
-var picsPerPage = 5;
+var picsPerPage = 3;
 var offset = 0;
 var numpics = countPics();
 var numPages = Math.ceil(numpics / picsPerPage);
-var imagediv = document.getElementById("images");
-
+var image_ids;
 function prevset() {
 
     offset = +offset - picsPerPage;
@@ -48,10 +47,7 @@ function fetchPics() {
         if (hr.readyState == 4 && hr.status == 200) {
             var return_data = hr.responseText;
 
-            //append or switch src
             queryRes = JSON.parse(return_data);
-            //alert(queryRes);
-            //console.log(queryRes);
             arrLength = queryRes.length;
             var myNode = document.getElementById("images");
             while (myNode.firstChild) {
@@ -60,17 +56,51 @@ function fetchPics() {
             for (var i = 0; i < arrLength; i++) {
                 var img = document.createElement('img');
                 img.setAttribute('id', "eg" + i);
+                img.setAttribute('data-id', queryRes[i]['img_id'])
                 img.setAttribute('src', queryRes[i]['img_name']);
-                img.setAttribute('onclick', 'alert(this.id)');
+                img.setAttribute('onclick', 'comFocus(this)');
                 myNode.appendChild(img);
-
             }
-            // alert(arrLength);
-
         }
     }
     hr.send(vars);
 }
+
+function comFocus(imgObject){
+    var newsrc = imgObject.src;
+    //alert(newsrc);
+    var actualimageid = imgObject.getAttribute("data-id");
+    //document.getElementById("showcom").innerHTML = newsrc;
+
+    ///////////////////
+
+    var hr = new XMLHttpRequest();
+    var url = "ajax.php";
+
+    var vars = "imgcomid="+actualimageid;
+    hr.open("POST", url, true);
+    hr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    hr.onreadystatechange = function () {
+        if (hr.readyState == 4 && hr.status == 200) {
+            var return_data = JSON.parse(hr.responseText);
+            alert(return_data);
+            
+            arlength = return_data.length;
+
+            var i = 0;
+            
+            while(i < arrLength){
+                document.getElementById("showcom").innerHTML += return_data[i]['comment'];
+                i++;
+            }
+
+             
+            }
+        }
+        hr.send(vars);
+    }
+
+
 
 window.onload = function () {
     fetchPics();

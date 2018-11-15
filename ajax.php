@@ -32,6 +32,14 @@ else if(isset($_POST['passwd_new']) && isset($_POST['passwd_current']) && isset(
 {
     passwordupdate2();
 }
+elseif (isset($_POST['imgcomid'])) {
+    
+    comments($_POST['imgcomid']);
+}
+elseif (isset($_POST['comment'])) {
+    
+    add_comment();
+}
 else
 {
     redirect::to('index.php');
@@ -76,9 +84,25 @@ function imgCount2()
     echo intval($num_images); 
 }
 
+function comments($img_id)
+{
+    global $db;
+    $db->get("comments", array('img_id', '=', $img_id));
+    $comments = $db->results();
+    echo json_encode($comments);
+}
 
-
-
+function add_comment()
+{
+    global $db, $user;
+    $db->insert('comments', array(
+        'user_img_id' => escape($_POST['user_img_id']),
+        'friend_id' => $user->data()->user_id,
+        'comment' => escape($_POST['comment']),
+        'img_id' => escape($_POST['img_id'])
+    ));
+    echo "insert successful";
+}
 
 function passwordupdate2()
 {

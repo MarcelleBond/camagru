@@ -14,6 +14,9 @@ function updPass()
          var return_data = hr.responseText;
           
           document.getElementById("passres").innerHTML = return_data;
+          document.getElementById("passwd_current").value = "";
+          document.getElementById("passwd_new").value = "";
+          document.getElementById("passwd_new_again").value = "";
          
      }
 }
@@ -34,7 +37,10 @@ function updEmail()
     hr.onreadystatechange = function() {
      if(hr.readyState == 4 && hr.status == 200) {
          var return_data = hr.responseText;
-          document.getElementById("emailres").innerHTML = return_data;
+        document.getElementById("emailres").innerHTML = return_data;
+        document.getElementById("email_again").value = "";
+        document.getElementById("email").value = "";
+          
           
          
      }
@@ -54,9 +60,10 @@ function updUser()
     hr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     hr.onreadystatechange = function() {
      if(hr.readyState == 4 && hr.status == 200) {
-         var return_data = hr.responseText;
-          
-          document.getElementById("userres").innerHTML = return_data;
+         var return_data = hr.responseText;  
+        document.getElementById("userres").innerHTML = return_data;
+        curpass =  document.getElementById("username").value = "";
+
      }
 }
 hr.send(vars);

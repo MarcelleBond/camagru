@@ -27,10 +27,18 @@
 	</div>
 	<img class="logo" src="images/site_images/logo.png" alt="logo">
 	<div id="images" class="photo" >
-</div>
+	</div>
+	<div id="comments" class="photo">
+		<div id="commentdiv0"></div>
+		<div id="commentdiv1"></div>
+		<div id="commentdiv2"></div>
+	</div>
 <div id="controls">
 	<button id="prev" onclick="prevset();">Previous</button>
 	<button id="next" onclick="nextset();">Next</button>
+</div>
+<div id="showcom" >
+
 </div>
 <div class="footer">
 	<p class='right' style="color: white">&copymbond</p>	

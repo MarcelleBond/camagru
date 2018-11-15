@@ -2,6 +2,7 @@
 	require_once 'core/init.php';
 	
 	$user = new user();
+	$db = DB::getInstance();
 	
 	if ($user->isloggedin()) {
 		redirect::to('index.php');
@@ -27,7 +28,6 @@
 				else
 				{
 					echo "<script>alert('Login Failed');</script>";
-
 				}
 			}
 			else
@@ -68,7 +68,7 @@
 			<input type="text" class="input_area" name="username" id="username" placeholder="Username" > <br>
 			<input type="password" class="input_area" name="passwd" id="passwd" placeholder="Password" required> <br>
 			<input type="hidden" name="token" value="<?php echo token::generate(); ?>" >
-			<p id="login_error" class="message"><?php error(); ?></p>
+			<p id="login_error" class="message"><?php /* error(); */ ?></p>
 			<input type="submit" class="button" name="submit" id="submit" value="Login">
 		</form>
 	</div>

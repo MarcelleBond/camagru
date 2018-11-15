@@ -1,4 +1,4 @@
-var picsPerPage = 5;
+var picsPerPage = 3;
 var offset = 0;
 var numpics = countPics();
 var numPages = Math.ceil(numpics / picsPerPage);
@@ -48,10 +48,7 @@ function fetchPics() {
         if (hr.readyState == 4 && hr.status == 200) {
             var return_data = hr.responseText;
 
-            //append or switch src
             queryRes = JSON.parse(return_data);
-            //alert(queryRes);
-            console.log(queryRes);
             arrLength = queryRes.length;
             var myNode = document.getElementById("images");
             while (myNode.firstChild) {
@@ -61,12 +58,10 @@ function fetchPics() {
                 var img = document.createElement('img');
                 img.setAttribute('id', "eg" + i);
                 img.setAttribute('src', queryRes[i]['img_name']);
-                img.setAttribute('onclick', 'alert(this.id)');
+                // img.setAttribute('onclick', 'alert(this.id)');
                 myNode.appendChild(img);
 
             }
-            // alert(arrLength);
-
         }
     }
     hr.send(vars);
