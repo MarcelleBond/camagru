@@ -32,13 +32,25 @@ else if(isset($_POST['passwd_new']) && isset($_POST['passwd_current']) && isset(
 {
     passwordupdate2();
 }
-elseif (isset($_POST['imgcomid'])) {
+else if (isset($_POST['imgcomid'])) {
     
     comments($_POST['imgcomid']);
 }
-elseif (isset($_POST['comment'])) {
-    
+else if (isset($_POST['comment'])) {
+
     add_comment();
+}
+else if (isset($_POST['picid'])) {
+
+    like_pic();
+}
+else if (isset($_POST['likes'])) {
+
+    count_likes();
+}
+else if (isset($_POST['remove_pic'])) {
+
+    remove_img();
 }
 else
 {
@@ -95,13 +107,47 @@ function comments($img_id)
 function add_comment()
 {
     global $db, $user;
-    $db->insert('comments', array(
-        'user_img_id' => escape($_POST['user_img_id']),
+    if ($db->insert('comments', array(
+        'user_img_id' => escape(input::get('user_img_id')),
         'friend_id' => $user->data()->user_id,
-        'comment' => escape($_POST['comment']),
-        'img_id' => escape($_POST['img_id'])
-    ));
-    echo "insert successful";
+        'comment' => escape(input::get('comment')),
+        'img_id' => escape(input::get('img_id'))
+    )))
+        echo "insert successful";
+    else
+        echo "fail to insert";
+}
+
+function like_pic()
+{
+    global $db, $user;
+    if ($db->query("INSERT INTO likes (img_id,likers_id,like_status) VALUES (?, ?, ?) ON DUPLICATE KEY UPDATE like_status=IF(like_status=1, 0, 1)", 
+    array('img_id' => input::get('picid'),
+    'likers_id' => $user->data()->user_id, 1)))
+    {
+        echo "liked inserted";
+    }
+    else
+        echo "failed to like";
+
+}
+
+function count_likes()
+{
+    global $db, $user;
+    $db->query("SELECT * FROM likes WHERE `img_id` = ".input::get('likes')." AND like_status = 1");
+    $images = $db->results();
+    $num_images = $db->count();
+    echo intval($num_images);
+}
+
+function remove_img()
+{
+    global $db, $user;
+    if($db->delete('gallery', array('img_id', '=', input::get('remove_pic'))))
+        echo "removed successfully ".input::get('remove_pic');
+    else
+        echo "failed to remove";
 }
 
 function passwordupdate2()

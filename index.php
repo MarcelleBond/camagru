@@ -12,6 +12,7 @@
 	<title>Welcome</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="css/w3.css" />
 	<script src="js/pager.js"></script>
 </head>
 <body>
@@ -26,20 +27,17 @@
 	?>
 	</div>
 	<img class="logo" src="images/site_images/logo.png" alt="logo">
-	<div id="images" class="photo" >
+	<div class="w3-row">
+		<div id="images" class="w3-container w3-twothird photo" >
+		</div>
+		<div id="showcom" class="w3-container w3-third" style="background: #333; color: white; margin-top:3px; margin-bottom:10px;">
+		</div>
 	</div>
-	<div id="comments" class="photo">
-		<div id="commentdiv0"></div>
-		<div id="commentdiv1"></div>
-		<div id="commentdiv2"></div>
-	</div>
-<div id="controls">
-	<button id="prev" onclick="prevset();">Previous</button>
-	<button id="next" onclick="nextset();">Next</button>
-</div>
-<div id="showcom" >
+		<div id="controls">
+			<button id="prev" onclick="prevset();">Previous</button>
+			<button id="next" onclick="nextset();">Next</button>
+		</div>
 
-</div>
 <div class="footer">
 	<p class='right' style="color: white">&copymbond</p>	
 	<ul class="footer">

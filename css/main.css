@@ -78,7 +78,7 @@
 .photo
 {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     grid-gap: 10px;
     overflow: hidden;
 }
@@ -86,12 +86,13 @@
 .photo img 
 {
     width: 100%;
+    max-width: 500px;
     border: #FFF 3px solid;
 }
 
 #controls
 {
-    width: 100%;
+    /* width: 100%; */
     background:  #333;
 }
 
@@ -143,7 +144,7 @@ button:hover{
     padding: 3px;
     overflow: hidden;
     background-color: #333;
-    width: 10%
+    width: 20%
 }
 
 .footer li a {
@@ -154,8 +155,6 @@ button:hover{
     text-decoration: none;
     width: 100%;
     cursor: pointer;
-
-
 }
 
 .footer li a:hover {

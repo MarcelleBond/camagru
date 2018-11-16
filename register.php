@@ -37,7 +37,7 @@
 						'username' => input::get('username'),
 						'passwd' => hash::make(input::get('passwd')),
 						'email' => input::get('email'),
-						'groups' => 1
+						'active' => 0
 					));
 
 					session::flash('home', 'you have been regestered and can login');
