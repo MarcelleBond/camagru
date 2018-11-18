@@ -16,6 +16,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
 	<link rel="stylesheet" type="text/css" media="screen" href="css/pic.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="css/w3.css" />
+
 	<script src="js/pic.js"></script>
 </head>
 <body>

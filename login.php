@@ -20,7 +20,7 @@
 			if ($validation->passed())
 			{
 				// $user = new user();
-				$login = $user->login(input::get('username'), input::get('passwd'));
+				$login = $user->login(escape(input::get('username')), escape(input::get('passwd')));
 				if($login)
 				{
 					redirect::to('index.php');
@@ -32,13 +32,9 @@
 			}
 			else
 			{
-				function error()
-				{
-					global $validation;
-					foreach ($validation->errors() as $error) {
-					echo $error, '<br>';
+				foreach ($validation->errors() as $error) {
+					echo "<script>alert('".$error."');</script>";
 				}
-			}
 			}
 		}
 	}
@@ -53,22 +49,28 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" media="screen" href="css/login.css" />
 	<link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="css/w3.css" />
+
 	<!-- <script src="main.js"></script> -->
 </head>
 <body>
 	<div class="navbar">
-		<ul class="header">
-			<li class="left"><a href="index.php">Home</a></li>
-			<li class="right"><a href="register.php">Register</a></li>
-		</ul>
+	<?php
+		if ($user->isloggedin()) {
+			loggedin();
+		}
+		else{
+			notloggedin();
+
+		}
+	?>
 	</div>
 	<img class="logo" src="images/site_images/logo.png" alt="logo">
 	<div class="login_box">
 		<form action="" method="post" autocomplete="off">
 			<input type="text" class="input_area" name="username" id="username" placeholder="Username" > <br>
-			<input type="password" class="input_area" name="passwd" id="passwd" placeholder="Password" required> <br>
+			<input type="password" class="input_area" name="passwd" id="passwd" placeholder="Password" > <br>
 			<input type="hidden" name="token" value="<?php echo token::generate(); ?>" >
-			<p id="login_error" class="message"><?php /* error(); */ ?></p>
 			<input type="submit" class="button" name="submit" id="submit" value="Login">
 		</form>
 	</div>

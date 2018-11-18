@@ -18,6 +18,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="css/updatepage.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="css/w3.css" />
     <script src="js/newajax.js"></script>
 </head>
 <body>
@@ -54,6 +55,11 @@
         <input class="input_area" type="password" name="passwd_new_again" id="passwd_new_again" placeholder="repeat new password"> <br>
         <p id="passres" class="message"></p>
         <button class="button" id="passupdate" type="submit" onclick="updPass();" value="Update"> Update</button><br>
+    </div>
+    <div class="login_box1">
+        <h1 class='current'>Receive notifications</h1>
+        <input onclick='testfunc()' type='checkbox' id='chbx'  name='chbx' style="width: 50px; height: 50px;">
+        <p id="userres" class="message"></p>
     </div>
     <div class="footer">
         <p class='right' style="color: white">&copymbond</p>	
