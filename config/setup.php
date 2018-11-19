@@ -15,27 +15,7 @@
             `groups` INT(255) NOT NULL,
             PRIMARY KEY(`user_id`)
         )");
-        $dbh->exec("CREATE TABLE `camagru`.`groups`(
-            `group_id` INT(255) NOT NULL AUTO_INCREMENT,
-            `group_name` VARCHAR(255) NOT NULL,
-            `permissions` TEXT NOT NULL,
-            PRIMARY KEY(`group_id`)
-        )");
-        $dbh->exec("CREATE TABLE `camagru`.`users_session`(
-            `session_id` INT(255) NOT NULL AUTO_INCREMENT,
-            `user_id` INT(255) NOT NULL,
-            `hash` VARCHAR(255) NOT NULL,
-            PRIMARY KEY(`session_id`)
-        )");
-        $dbh->exec("INSERT INTO `camagru`.`groups`(`group_id`, `group_name`, `permissions`)
-            VALUES(NULL, 'Standard user', '')");
-        $dbh->exec("INSERT INTO `camagru`.`groups`(`group_id`, `group_name`, `permissions`)
-        VALUES(
-            NULL,
-            'Administrator',
-            '{\"admin\": 1}'
-        )");
-        $dbh->exec("CREATE TABLE `camagru`.`gallery`(
+        $dbh->exec("CREATE TABLE IF NOT EXISTS `camagru`.`gallery`(
             `img_id` INT(255) NOT NULL AUTO_INCREMENT,
             `img_name` VARCHAR(255) NOT NULL,
             `user_id` INT(255) NOT NULL,
@@ -43,7 +23,7 @@
             `time_stamp` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
             PRIMARY KEY(`img_id`)  
         )");
-        $dbh->exec("CREATE TABLE `camagru`.`comments`(
+        $dbh->exec("CREATE TABLE IF NOT EXISTS `camagru`.`comments`(
             `comment_id` INT(255) NOT NULL AUTO_INCREMENT,
             `user_img_id` INT(255) NOT NULL,
             `friend_id` INT(255) NOT NULL,

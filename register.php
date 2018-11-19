@@ -4,7 +4,7 @@
 	 function activeEmail($token, $mail) {
 		$message = ' 
 		Click on link below to activate account:
-		http://localhost:8080/new/Camagru/active.php?token='.$token.'&email='.$mail;
+		http://localhost:8080/camagru/active.php?token='.$token.'&email='.$mail;
 		$message = wordwrap($message, 100, "\r\n");
 		mail( escape($_POST['email']) , 'Activation link' , $message);
 		echo '<script>alert("Pls check email.")</script>';
@@ -32,7 +32,8 @@
 				),
 				'email' => array(
 					'required' => true,
-					'unique' => 'users'
+					'unique' => 'users',
+					'valid_email' => 1
 				)
 			));
 
@@ -64,7 +65,7 @@
 			else
 			{
 				foreach ($validate->errors() as $error) {
-					echo $error, '<br>';
+					echo "<script>alert('".$error."');</script>";
 				}
 			}
 		}
@@ -109,7 +110,7 @@ else
 			<input class="input_area" id="username" type="text" name="username" placeholder="Username" value="<?php echo escape(Input::get('username'));?>">
 			<input class="input_area" id="passwd" type="password" name="passwd" placeholder="Password">
 			<input class="input_area" id="passwd_again" type="password" name="passwd_again" placeholder="Password again">
-			<input class="input_area" id="email" type="email" name="email" placeholder="example@host.com"value="<?php echo escape(Input::get('email'));?>">
+			<input class="input_area" id="email" type="input" name="email" placeholder="example@host.com"value="<?php echo escape(Input::get('email'));?>">
 			<input type="hidden" name="token" value="<?php echo token::generate(); ?>" >
 			<input class="button" type="submit" value="register">
 		</form>

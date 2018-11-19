@@ -125,10 +125,10 @@ function add_comment()
         )))
         {
             $user_img = new user(escape(input::get('user_img_id')));
-            if ($user_img->data()->notify === 1)
+            if ($user_img->data()->notify === '1')
             {
                 
-                $mail = $res['E-mail'];
+                $mail = $user_img->data()->email;
                 $message = 'SOMEONE COMMENTED ON ONE OF YOUR POSTS';
                 $message = wordwrap($message, 100, "\r\n");
                 mail($mail , 'NOTIFICATION' , $message);

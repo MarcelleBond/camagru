@@ -6,36 +6,37 @@
 	
 	if ($usercheck->isloggedin()) {
 		redirect::to('index.php');
-	}
-	
+	} 
+
+    function activeEmail($mail) {
+    $message = ' 
+    Click on link below to reset your password:
+    http://localhost:8080/camagru/reset.php?email='.$mail;
+    $message = wordwrap($message, 100, "\r\n");
+    mail( $_POST['email'] , 'Activation link' , $message);
+    echo '<script>alert("Pls check email.")</script>';
+    }
+
 	if(input::exists())
 	{
 		if (token::check(input::get('token')))
 		{
 			$validate = new validate();
 			$validation = $validate->check($_POST, array(
-				'username' => array('required' => true),
-				'passwd' => array('required' => true)
+                'email' => array('required' => true,
+                            'valid_email' => 1),
 			));
 			if ($validation->passed())
 			{
-				$user = new user(escape(input::get('username')));
-				if ($user->data()->active === '1')
+                $db->query("SELECT `user_id` FROM `users` WHERE `email` = ?", array('email' => escape(input::get('email'))));
+				if ($db->count() > 0)
 				{
-					$login = $user->login(escape(input::get('username')), escape(input::get('passwd')));
-					if($login)
-					{
-						echo "<script>alert('".$user->data()->active."');</script>";
-						redirect::to('index.php');
-					}
-					else
-					{
-						echo "<script>alert('Login Failed');</script>";
-					}
+                    activeEmail(escape(input::get('email')));
+                    redirect::to('logout.php');
 				}
 				else
 				{
-					echo "<script>alert('Please activate your account');</script>";
+					echo '<script>alert("User does not exist.")</script>';
 				}
 			}
 			else
@@ -46,14 +47,14 @@
 			}
 		}
 	}
-?>
+?> 
 
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Login</title>
+	<title>forgot password</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" media="screen" href="css/login.css" />
 	<link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
@@ -74,14 +75,13 @@
 	?>
 	</div>
 	<img class="logo" src="images/site_images/logo.png" alt="logo">
-	<div class="login_box">
+    <div class="login_box">
 		<form action="" method="post" autocomplete="off">
-			<input type="text" class="input_area" name="username" id="username" placeholder="Username" > <br>
-			<input type="password" class="input_area" name="passwd" id="passwd" placeholder="Password" > <br>
+			<input type="text" class="input_area" name="email" id="email" placeholder="Enter  Email" > <br>
 			<input type="hidden" name="token" value="<?php echo token::generate(); ?>" >
-			<input type="submit" class="button" name="submit" id="submit" value="Login">
+			<input type="submit" class="button" name="submit" id="submit" value="Submit">
 		</form>
-			<button class="button"><a href="forgot.php">Forgot password ?</a></button>
+	</div>
 	</div>
 	<div class="footer">
 		<p class='right' style="color: white">&copymbond</p>	

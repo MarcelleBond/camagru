@@ -58,7 +58,7 @@
     </div>
     <div class="login_box1">
         <h1 class='current'>Receive notifications</h1>
-        <input onclick='testfunc()' type='checkbox' id='chbx'  name='chbx' style="width: 50px; height: 50px;">
+        <input  type='checkbox' id='chbx'  name='chbx' style="width: 50px; height: 50px;">
         <p id="userres" class="message"></p>
     </div>
     <div class="footer">

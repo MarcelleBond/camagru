@@ -66,10 +66,10 @@ function updUser() {
     hr.send(vars);
 }
 
-var box = document.getElementById("chbx");
 
 function testfunc() {
-    notifsub(box)
+    // notifsub(box)
+    var box = document.getElementById("chbx");
     var xhr = new XMLHttpRequest();
     var url = "ajax.php";
     if (box.checked) {
@@ -94,6 +94,7 @@ function notifsub(cbx) {
 }
 
 function checkcheck() {
+    var box = document.getElementById("chbx");
     var xhr = new XMLHttpRequest();
     var url = "ajax.php";
     var newvars = "mypostname=" + "testttt";
@@ -118,5 +119,9 @@ function checkcheck() {
 window.onload = function () {
     // alert(box.value);
     checkcheck();
+    var chk = document.getElementById('chbx').addEventListener('click', function(event)
+    {
+        testfunc();
+    })
 
 }

@@ -50,6 +50,11 @@
 									$this->addError("{$item} already exist");
 								}
 							break;
+							case 'valid_email' :
+							if(!preg_match("^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$^", $value)){
+								$this->addError("The email you have entered is invalid, please try again.");
+							}
+							break;
 						}
 					}
 				}
