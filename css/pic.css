@@ -1,17 +1,8 @@
 #overlay {
     position: absolute;
     display: block;
-    width: 20%;
-    height: 20%; 
-    top: 100;
-    left: 60;
-    right: 70;
-    bottom: 30;
     z-index: 2;
-   
-    
     cursor: pointer;
-
 }
 
 #text{
@@ -24,16 +15,20 @@
 
 .top_container
 {
-    width: 500px;
+    width: 100%;
+    max-width: 500px;
     margin: 30px auto;
 }
 
 #canvas
 {
+    
     display: none;
 }
 #canvas2
 {
+    width: 100%;
+    max-width: 500px;
     display: none;
 }
 
@@ -59,6 +54,7 @@
     font-family: "Roboto", sans-serif;
     text-transform: uppercase;
     background:  #333;
+    max-width: 500px;
     width: 100%;
     border: 0px;
     padding: 15px;
@@ -77,8 +73,17 @@
 
 .emo_list
 {
-    align-content: center;
-    padding-left: 18px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    overflow: hidden;
+}
+
+.emo_list img
+{
+    width: 100%;
+    max-width: 50px;
+    height: auto;
+    border: #FFF 3px solid;
 }
 
 .thumb_nail

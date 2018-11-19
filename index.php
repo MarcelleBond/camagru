@@ -2,7 +2,6 @@
  	require_once 'core/init.php';
 
 	 $user = new user();
-	
 ?>
 <!DOCTYPE html>
 <html>
@@ -23,15 +22,23 @@
 		}
 		else{
 			notloggedin();
+
 		}
 	?>
 	</div>
 	<img class="logo" src="images/site_images/logo.png" alt="logo">
+	<?php
+		if (session::exists('home'))
+		{
+			$text = session::flash('home');
+			echo "<p class='logo'>$text</p>";
+		}
+	?>
 	<div class="w3-row">
 		<div id="images" class="w3-container w3-twothird photo" >
 		</div>
 		<div id="showcom" class="w3-container w3-third" style="background: #333; color: white; margin-top:3px; margin-bottom:10px;">
-		</div>
+			</div>
 	</div>
 		<div id="controls">
 			<button id="prev" onclick="prevset();">Previous</button>

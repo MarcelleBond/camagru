@@ -52,6 +52,14 @@ else if (isset($_POST['remove_pic'])) {
 
     remove_img();
 }
+else if (isset($_POST['notify']))
+{
+    notify();
+}
+else if (isset($_POST['mypostname']))
+{
+    checknotify();
+}
 else
 {
     redirect::to('index.php');
@@ -107,28 +115,49 @@ function comments($img_id)
 function add_comment()
 {
     global $db, $user;
-    if ($db->insert('comments', array(
-        'user_img_id' => escape(input::get('user_img_id')),
-        'friend_id' => $user->data()->user_id,
-        'comment' => escape(input::get('comment')),
-        'img_id' => escape(input::get('img_id'))
-    )))
-        echo "insert successful";
-    else
-        echo "fail to insert";
+    if ($user->isloggedin())
+    {
+        if ($db->insert('comments', array(
+            'user_img_id' => escape(input::get('user_img_id')),
+            'friend_id' => $user->data()->user_id,
+            'comment' => escape(input::get('comment')),
+            'img_id' => escape(input::get('img_id'))
+        )))
+        {
+            $user_img = new user(escape(input::get('user_img_id')));
+            if ($user_img->data()->notify === 1)
+            {
+                
+                $mail = $res['E-mail'];
+                $message = 'SOMEONE COMMENTED ON ONE OF YOUR POSTS';
+                $message = wordwrap($message, 100, "\r\n");
+                mail($mail , 'NOTIFICATION' , $message);
+            } 
+            echo "insert successful";
+        }
+    }
+    else 
+    {
+        echo "please login to comment";
+    }
 }
 
 function like_pic()
 {
     global $db, $user;
-    if ($db->query("INSERT INTO likes (img_id,likers_id,like_status) VALUES (?, ?, ?) ON DUPLICATE KEY UPDATE like_status=IF(like_status=1, 0, 1)", 
-    array('img_id' => input::get('picid'),
-    'likers_id' => $user->data()->user_id, 1)))
+    if ($user->isloggedin())
     {
-        echo "liked inserted";
+        if ($db->query("INSERT INTO likes (img_id,likers_id,like_status) VALUES (?, ?, ?) ON DUPLICATE KEY UPDATE like_status=IF(like_status=1, 0, 1)", 
+        array('img_id' => input::get('picid'),
+        'likers_id' => $user->data()->user_id, 1)))
+        {
+            echo "liked inserted";
+        }
     }
-    else
-        echo "failed to like";
+    else 
+    {
+        echo "please login to like";
+    }
 
 }
 
@@ -149,6 +178,24 @@ function remove_img()
     else
         echo "failed to remove";
 }
+
+function checknotify()
+{
+    global $user;
+
+    echo $user->data()->notify;
+}
+
+function notify()
+{
+    global $user;
+    $user->update(array(
+        'notify' => input::get('notify')
+    ));
+    echo "Update successful";
+}
+
+
 
 function passwordupdate2()
 {

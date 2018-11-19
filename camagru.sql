@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.8.2
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Nov 16, 2018 at 07:02 AM
--- Server version: 5.7.23
--- PHP Version: 7.1.22
+-- Host: 127.0.0.1
+-- Generation Time: Nov 19, 2018 at 12:19 AM
+-- Server version: 10.1.34-MariaDB
+-- PHP Version: 7.2.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -37,13 +37,6 @@ CREATE TABLE `comments` (
   `img_id` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `comments`
---
-
-INSERT INTO `comments` (`comment_id`, `user_img_id`, `friend_id`, `comment`, `time_stamp`, `img_id`) VALUES
-(8, 1, 1, 'asdasda', '2018-11-16 14:58:44', 2);
-
 -- --------------------------------------------------------
 
 --
@@ -56,14 +49,6 @@ CREATE TABLE `gallery` (
   `user_id` int(255) NOT NULL,
   `time_stamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `gallery`
---
-
-INSERT INTO `gallery` (`img_id`, `img_name`, `user_id`, `time_stamp`) VALUES
-(1, 'images/gallary/user_1_image_1.png', 1, '2018-11-16 06:38:22'),
-(2, 'images/gallary/user_1_image_2.png', 1, '2018-11-16 06:38:32');
 
 -- --------------------------------------------------------
 
@@ -90,18 +75,9 @@ CREATE TABLE `users` (
   `email` varchar(255) NOT NULL,
   `joined` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `active` int(255) NOT NULL,
-  `ver_code` varchar(255) NOT NULL
+  `ver_code` varchar(255) NOT NULL,
+  `notify` int(255) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`user_id`, `username`, `passwd`, `email`, `joined`, `active`, `ver_code`) VALUES
-(1, 'Tyler', 'fd9d94340dbd72c11b37ebb0d2a19b4d05e00fd78e4e2ce8923b9ea3a54e900df181cfb112a8a73228d1f3551680e2ad9701a4fcfb248fa7fa77b95180628bb2', 'test@123.com', '2018-10-22 09:46:10', 2, ''),
-(2, 'Amy', 'fd9d94340dbd72c11b37ebb0d2a19b4d05e00fd78e4e2ce8923b9ea3a54e900df181cfb112a8a73228d1f3551680e2ad9701a4fcfb248fa7fa77b95180628bb2', 'mbonddfsg@student.wethinkcode.co.za', '2018-10-22 10:59:13', 1, ''),
-(3, 'Carlos', 'fd9d94340dbd72c11b37ebb0d2a19b4d05e00fd78e4e2ce8923b9ea3a54e900df181cfb112a8a73228d1f3551680e2ad9701a4fcfb248fa7fa77b95180628bb2', 'marcelle.b.bond@gmail.com', '2018-10-22 12:35:45', 1, ''),
-(4, 'Marcelle Bond', '21d5cb651222c347ea1284c0acf162000b4d3e34766f0d00312e3480f633088822809b6a54ba7edfa17e8fcb5713f8912ee3a218dd98d88c38bbf611b1b1ed2b', 'mbond@student.wethinkcode.co.za', '2018-10-22 13:54:15', 1, '');
 
 -- --------------------------------------------------------
 
@@ -158,19 +134,19 @@ ALTER TABLE `users_session`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `comment_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `comment_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `gallery`
 --
 ALTER TABLE `gallery`
-  MODIFY `img_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `img_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `user_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `users_session`

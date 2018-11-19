@@ -85,8 +85,8 @@
 								}
 								cookie::put($this->_cookieName, $hash, config::get('remember/cookie_expiry'));
 							}
-
-							return true;
+							if ($this->data()->active === 1)
+								return true;
 						}
 					}
 				}

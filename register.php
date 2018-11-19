@@ -1,7 +1,14 @@
 <?php
  	require_once 'core/init.php';
 	 $user = new user();
-
+	 function activeEmail($token, $mail) {
+		$message = ' 
+		Click on link below to activate account:
+		http://localhost:8080/new/Camagru/active.php?token='.$token.'&email='.$mail;
+		$message = wordwrap($message, 100, "\r\n");
+		mail( escape($_POST['email']) , 'Activation link' , $message);
+		echo '<script>alert("Pls check email.")</script>';
+		}	
 	if(!$user->isloggedin())
 	{
 	 if (Input::exists()) {
@@ -33,15 +40,21 @@
 			{
 				try
 				{
+					$token = "QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm1234567890!$()*";
+					$token = str_shuffle($token);
+					$token = substr($token, 0, 10);
 					$user->create(array(
-						'username' => input::get('username'),
-						'passwd' => hash::make(input::get('passwd')),
-						'email' => input::get('email'),
-						'active' => 0
+						'username' => escape(input::get('username')),
+						'passwd' => hash::make(escape(input::get('passwd'))),
+						'email' => escape(input::get('email')),
+						'active' => 0,
+						'ver_code' => $token,
 					));
-
-					session::flash('home', 'you have been regestered and can login');
+					activeEmail($token,escape(input::get('email')));
+					
+					session::flash('home', '<script>alert("Please check email.")</script>');
 					redirect::to('index.php');
+					
 				}
 				catch(Exception $e)
 				{
@@ -61,6 +74,8 @@ else
 {
 	redirect::to('index.php');
 }
+
+
 ?>
 
 <!DOCTYPE html>
@@ -72,14 +87,21 @@ else
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
 	<link rel="stylesheet" type="text/css" media="screen" href="css/signup.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="css/w3.css" />
+
 	<!-- <script src="main.js"></script> -->
 </head>
 <body>
 	<div class="navbar">
-		<ul>
-			<li class="left"><a href="index.php">Home</a></li>
-			<li class="right"><a href="login.php">Login</a></li>
-		</ul>
+	<?php
+		if ($user->isloggedin()) {
+			loggedin();
+		}
+		else{
+			notloggedin();
+
+		}
+	?>
 	</div>
 	<img class="logo" src="images/site_images/logo.png" alt="logo">
 	<div class="login_box">
