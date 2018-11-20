@@ -2,6 +2,11 @@
  	require_once 'core/init.php';
 
 	 $user = new user();
+	 if (session::exists('home'))
+		{
+			$text = session::flash('home');
+			echo "<p class='logo'>$text</p>";
+		}
 ?>
 <!DOCTYPE html>
 <html>
@@ -28,11 +33,7 @@
 	</div>
 	<img class="logo" src="images/site_images/logo.png" alt="logo">
 	<?php
-		if (session::exists('home'))
-		{
-			$text = session::flash('home');
-			echo "<p class='logo'>$text</p>";
-		}
+		
 	?>
 	<div class="w3-row">
 		<div id="images" class="w3-container w3-twothird photo" >
