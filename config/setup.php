@@ -47,7 +47,7 @@
         $dbh->exec("ALTER TABLE
         `camagru`.`likes` ADD CONSTRAINT `del_likes` FOREIGN KEY(`img_id`) REFERENCES `camagru`.`gallery`(`img_id`) ON DELETE CASCADE ON UPDATE NO ACTION");
         
-        // header('Location: ../index.php');
+        header('Location: ../index.php');
     } catch (PDOException $e) {
         die("DB ERROR: ". $e->getMessage());
     }

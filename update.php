@@ -11,6 +11,7 @@
 
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,9 +19,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="css/updatepage.css" />
-	<link rel="stylesheet" type="text/css" media="screen" href="css/w3.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="css/w3.css" />
     <script src="js/newajax.js"></script>
 </head>
+
 <body>
     <div class="navbar">
         <?php
@@ -34,35 +36,37 @@
     </div>
     <img class="logo" src="images/site_images/logo.png" alt="logo">
     <div class="login_box1">
-            <h1 class='current'>Update Username</h1>
-            <input class="input_area" id="username" type="text" name="username" placeholder="New Username">
-            <input type="hidden" name="token" value="<?php echo token::generate(); ?>" >
-            <p id="userres" class="message"></p>
-            <button class="button" id="passupdate" type="submit" onclick="updUser();" value="Update"> Update</button><br>
+        <h1 class='current'>Update Username</h1>
+        <input class="input_area" id="username" type="text" name="username" placeholder="New Username">
+        <input type="hidden" name="token" value="<?php echo token::generate(); ?>">
+        <p id="userres" class="message"></p>
+        <button class="button" id="passupdate" type="submit" onclick="updUser();" value="Update"> Update</button><br>
     </div>
     <div class="login_box2">
-            <h1 class='current'>Update Email</h1>
-            <input class="input_area" type="email" id="email" name="email" placeholder="New Email">    
-            <input class="input_area" type="email" id="email_again" name="email_again" placeholder="Confirm New Email">    
-            <input type="hidden" name="token" value="<?php echo token::generate(); ?>" >
-            <p id="emailres" class="message"></p>
-            <button class="button" id="passupdate" type="submit" onclick="updEmail();" value="Update"> Update</button><br>                
+        <h1 class='current'>Update Email</h1>
+        <input class="input_area" type="email" id="email" name="email" placeholder="New Email">
+        <input class="input_area" type="email" id="email_again" name="email_again" placeholder="Confirm New Email">
+        <input type="hidden" name="token" value="<?php echo token::generate(); ?>">
+        <p id="emailres" class="message"></p>
+        <button class="button" id="passupdate" type="submit" onclick="updEmail();" value="Update"> Update</button><br>
     </div>
     <div class="login_box3">
         <h1 class='current'>Update Password</h1>
-        <input class="input_area" type="password" name="passwd_current" id="passwd_current" placeholder="current password"> <br>
+        <input class="input_area" type="password" name="passwd_current" id="passwd_current" placeholder="current password">
+        <br>
         <input class="input_area" type="password" name="passwd_new" id="passwd_new" placeholder="new password"> <br>
-        <input class="input_area" type="password" name="passwd_new_again" id="passwd_new_again" placeholder="repeat new password"> <br>
+        <input class="input_area" type="password" name="passwd_new_again" id="passwd_new_again" placeholder="repeat new password">
+        <br>
         <p id="passres" class="message"></p>
         <button class="button" id="passupdate" type="submit" onclick="updPass();" value="Update"> Update</button><br>
     </div>
     <div class="login_box1">
         <h1 class='current'>Receive notifications</h1>
-        <input  type='checkbox' id='chbx'  name='chbx' style="width: 50px; height: 50px;">
+        <input type='checkbox' id='chbx' name='chbx' style="width: 50px; height: 50px;">
         <p id="userres" class="message"></p>
     </div>
     <div class="footer">
-        <p class='right' style="color: white">&copymbond</p>	
+        <p class='right' style="color: white">&copymbond</p>
         <ul class="footer">
             <li><a href="index.php">Home</a></li>
             <?php
@@ -73,4 +77,5 @@
         </ul>
     </div>
 </body>
+
 </html>
