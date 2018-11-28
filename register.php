@@ -6,7 +6,8 @@
 		Click on link below to activate account:
 		http://localhost:8080/camagru/active.php?token='.$token.'&email='.$mail;
 		$message = wordwrap($message, 100, "\r\n");
-		mail( escape($_POST['email']) , 'Activation link' , $message);
+		$headers = "From: Mbond@students.wethinkcode.co.za" . "\r\n" .
+		mail( escape($_POST['email']) , 'Activation link' , $message, $headers);
 		echo '<script>alert("Pls check email.")</script>';
 		}	
 	if(!$user->isloggedin())
@@ -108,8 +109,8 @@ else
 	<div class="login_box">
 		<form action="" method="post" autocomplete="off">
 			<input class="input_area" id="username" type="text" name="username" placeholder="Username" value="<?php echo escape(Input::get('username'));?>">
-			<input class="input_area" id="passwd" type="password" name="passwd" placeholder="Password">
-			<input class="input_area" id="passwd_again" type="password" name="passwd_again" placeholder="Password again">
+			<input class="input_area" id="passwd" type="password" name="passwd" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
+			<input class="input_area" id="passwd_again" type="password" name="passwd_again" placeholder="Password again" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
 			<input class="input_area" id="email" type="input" name="email" placeholder="example@host.com"value="<?php echo escape(Input::get('email'));?>">
 			<input type="hidden" name="token" value="<?php echo token::generate(); ?>" >
 			<input class="button" type="submit" value="register">

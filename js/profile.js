@@ -79,7 +79,6 @@ function fetchPics() {
 
 function comFocus(imgObject) {
     var newsrc = imgObject.src;
-    //alert(newsrc);
     var ele = imgObject.getAttribute("data-id");
     var actualimageid = ele.split(",");
     //document.getElementById("showcom").innerHTML = newsrc;
@@ -160,7 +159,6 @@ function comment()
     hr.onreadystatechange = function () {
         if (hr.readyState == 4 && hr.status == 200) {
             var return_data = hr.responseText;
-           // alert(return_data);
            comFocus(imgObject);
         }
     }
@@ -207,7 +205,6 @@ function fetchlikes(actualimageid)
 
 function remove_pic(actualimageid)
 {
-    // alert(actualimageid)
     var hr = new XMLHttpRequest();
     var url = "ajax.php";
     var vars = "remove_pic="+actualimageid;
@@ -216,7 +213,6 @@ function remove_pic(actualimageid)
     hr.onreadystatechange = function() {
         if(hr.readyState == 4 && hr.status == 200) {
             var return_data = hr.responseText;
-            // alert(return_data);
             var div = document.getElementById("showcom");
             while (div.firstChild) {
                 div.removeChild(div.firstChild);

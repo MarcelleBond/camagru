@@ -68,7 +68,6 @@ function updUser() {
 
 
 function testfunc() {
-    // notifsub(box)
     var box = document.getElementById("chbx");
     var xhr = new XMLHttpRequest();
     var url = "ajax.php";
@@ -84,14 +83,6 @@ function testfunc() {
     xhr.send(newvars);
 }
 
-function notifsub(cbx) {
-    if (cbx.checked) {
-        alert('checkbox is checked!');
-    }
-    else {
-        alert("TSEK");
-    }
-}
 
 function checkcheck() {
     var box = document.getElementById("chbx");
@@ -117,7 +108,6 @@ function checkcheck() {
 }
 
 window.onload = function () {
-    // alert(box.value);
     checkcheck();
     var chk = document.getElementById('chbx').addEventListener('click', function(event)
     {

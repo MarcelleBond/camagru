@@ -77,7 +77,6 @@ function fetchPics() {
 
 function comFocus(imgObject) {
     var newsrc = imgObject.src;
-    //alert(newsrc);
     var ele = imgObject.getAttribute("data-id");
     var actualimageid = ele.split(",");
     //document.getElementById("showcom").innerHTML = newsrc;
