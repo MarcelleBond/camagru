@@ -7,7 +7,7 @@
 			'host' => $DB_DNS,
 			'user' => $DB_USER,
 			'password' => $DB_PASSWORD,
-			'db' => "camagru"
+			'db' => "camagru;charset=utf8mb4"
 		),
 		'remember' => array(
 			'cookie_name' => 'hash',

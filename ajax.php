@@ -92,7 +92,7 @@ function add_comment()
         if ($db->insert('comments', array(
             'user_img_id' => escape(input::get('user_img_id')),
             'friend_id' => $user->data()->user_id,
-            'comment' => escape(input::get('comment')),
+            'comment' => input::get('comment'),
             'img_id' => escape(input::get('img_id')),
         ))) {
             $user_img = new user(escape(input::get('user_img_id')));
@@ -122,7 +122,6 @@ function like_pic()
     } else {
         echo "please login to like";
     }
-
 }
 
 function count_likes()
@@ -192,7 +191,7 @@ function passwordupdate2()
                 $user->update(array(
                     'passwd' => hash::make(input::get('passwd_new')),
                 ));
-                echo "Password update successfully";
+                redirect::to('logout.php');
             }
         } else {
             foreach ($validation->errors() as $error) {

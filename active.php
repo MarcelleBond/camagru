@@ -2,7 +2,7 @@
 
 	require_once 'core/init.php';	
 	
-	$db = db::getInstance();
+	$db = DB::getInstance();
     try{
 		$db->query("SELECT `user_id` FROM `users` WHERE `email` = ? AND `active`= 0 AND `ver_code`= ?",
 		 array('email' => escape(input::get('email')), 'ver_code' => escape(input::get('token'))));
