@@ -25,7 +25,6 @@
 					$login = $user->login(escape(input::get('username')), escape(input::get('passwd')));
 					if($login)
 					{
-						// echo "<script>alert('".$user->data()->active."');</script>";
 						redirect::to('index.php');
 					}
 					else
