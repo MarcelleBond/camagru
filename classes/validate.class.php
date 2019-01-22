@@ -55,6 +55,11 @@
 								$this->addError("The email you have entered is invalid, please try again.");
 							}
 							break;
+							case 'ascii' :
+							if (!preg_match('/^(?=.*\d)(?=.*[A-Za-z])[0-9A-Za-z!@#$%]{8,12}$/', $value)){
+								$this->addError("Password must contain Uppercase, Lowercase and number");
+							}
+							break;
 						}
 					}
 				}

@@ -26,10 +26,12 @@
 				'passwd' => array(
 					'required' => true,
 					'min' => 6,
+					'ascii' => true,
 				),
 				'passwd_again' => array(
 					'required' => true,
-					'matches' => 'passwd'
+					'matches' => 'passwd',
+					'ascii' => true,
 				),
 				'email' => array(
 					'required' => true,
