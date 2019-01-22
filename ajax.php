@@ -92,7 +92,7 @@ function add_comment()
         if ($db->insert('comments', array(
             'user_img_id' => escape(input::get('user_img_id')),
             'friend_id' => $user->data()->user_id,
-            'comment' => input::get('comment'),
+            'comment' => escape(input::get('comment')),
             'img_id' => escape(input::get('img_id')),
         ))) {
             $user_img = new user(escape(input::get('user_img_id')));
@@ -115,7 +115,7 @@ function like_pic()
     global $db, $user;
     if ($user->isloggedin()) {
         if ($db->query("INSERT INTO likes (img_id,likers_id,like_status) VALUES (?, ?, ?) ON DUPLICATE KEY UPDATE like_status=IF(like_status=1, 0, 1)",
-            array('img_id' => input::get('picid'),
+            array('img_id' => escape(input::get('picid')),
                 'likers_id' => $user->data()->user_id, 1))) {
             echo "liked inserted";
         }
@@ -185,11 +185,11 @@ function passwordupdate2()
         ));
 
         if ($validation->passed()) {
-            if (hash::make(input::get('passwd_current')) !== $user->data()->passwd) {
+            if (hash::make(escape(input::get('passwd_current'))) !== $user->data()->passwd) {
                 echo "Your current password was incorrect :(";
             } else {
                 $user->update(array(
-                    'passwd' => hash::make(input::get('passwd_new')),
+                    'passwd' => hash::make(escape(input::get('passwd_new'))),
                 ));
                 redirect::to('logout.php');
             }

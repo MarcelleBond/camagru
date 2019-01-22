@@ -105,7 +105,7 @@
 
 		public function logout()
 		{
-			$this->_db->delete('users_session', array('user_id', '=', $this->data()->user_id));
+			// $this->_db->delete('users_session', array('user_id', '=', $this->data()->user_id));
 
 			session::delete($this->_sessionName);
 			cookie::delete($this->_cookieName);

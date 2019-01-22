@@ -1,7 +1,7 @@
 <?php
     require_once 'core/init.php';
 
-    if (!$username = input::get('user')) {
+    if (!$username = escape(input::get('user'))) {
         redirect::to('index.php');
     } else {
         $user_profile = new user($username);
