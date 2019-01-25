@@ -152,7 +152,7 @@ function comment()
     hr.onreadystatechange = function () {
         if (hr.readyState == 4 && hr.status == 200) {
             var return_data = hr.responseText;
-            if (!return_data.localeCompare("please login to comment"))
+            // if (!return_data.localeCompare("please login to comment"))
                 // alert(return_data);
            comFocus(imgObject);
         }
@@ -174,7 +174,7 @@ function likes_pic()
     hr.onreadystatechange = function() {
         if(hr.readyState == 4 && hr.status == 200) {
             var return_data = hr.responseText;
-            if (!return_data.localeCompare("please login to like"))
+            // if (!return_data.localeCompare("please login to like"))
                 // alert(return_data);
             comFocus(imgObject);
         } 

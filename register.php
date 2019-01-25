@@ -44,7 +44,7 @@
 			{
 				try
 				{
-					$token = "QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm1234567890!$()*";
+					$token = "QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm1234567890";
 					$token = str_shuffle($token);
 					$token = substr($token, 0, 10);
 					$user->create(array(

@@ -56,7 +56,7 @@
 							}
 							break;
 							case 'ascii' :
-							if (!preg_match('/^(?=.*\d)(?=.*[A-Za-z])[0-9A-Za-z!@#$%]{8,12}$/', $value)){
+							if (!preg_match('/^(?=.*\d)(?=.*[A-Za-z])[0-9A-Za-z!@#$%*]{8,12}$/', $value)){
 								$this->addError("Password must contain Uppercase, Lowercase and number");
 							}
 							break;
