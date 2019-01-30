@@ -1,4 +1,4 @@
-var picsPerPage = 4;
+var picsPerPage = 5;
 var offset = 0;
 var numpics = countPics();
 var numPages = Math.ceil(numpics / picsPerPage);
@@ -152,8 +152,6 @@ function comment()
     hr.onreadystatechange = function () {
         if (hr.readyState == 4 && hr.status == 200) {
             var return_data = hr.responseText;
-            // if (!return_data.localeCompare("please login to comment"))
-                // alert(return_data);
            comFocus(imgObject);
         }
     }
@@ -168,14 +166,12 @@ function likes_pic()
 
     var hr = new XMLHttpRequest();
     var url = "ajax.php";
-    var vars = "picid="+actualimageid[0];
+    var vars = "picid="+actualimageid[0]+"&user_img_id=" + actualimageid[1];
     hr.open("POST", url, true);
     hr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     hr.onreadystatechange = function() {
         if(hr.readyState == 4 && hr.status == 200) {
             var return_data = hr.responseText;
-            // if (!return_data.localeCompare("please login to like"))
-                // alert(return_data);
             comFocus(imgObject);
         } 
     }

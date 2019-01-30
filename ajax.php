@@ -117,6 +117,17 @@ function like_pic()
         if ($db->query("INSERT INTO likes (img_id,likers_id,like_status) VALUES (?, ?, ?) ON DUPLICATE KEY UPDATE like_status=IF(like_status=1, 0, 1)",
             array('img_id' => escape(input::get('picid')),
                 'likers_id' => $user->data()->user_id, 1))) {
+            $user_img = new user(escape(input::get('user_img_id')));
+            $db->query('SELECT like_status FROM likes WHERE img_id = ? AND likers_id = ? ', array('img_id' => escape(input::get('picid')),
+            'likers_id' => $user->data()->user_id));
+            $like_stat = $db->results();
+                    if ($user_img->data()->notify === '1' && $like_stat[0]->like_status == 1) {
+
+                        $mail = $user_img->data()->email;
+                        $message = 'SOMEONE LIKED ONE OF YOUR POSTS';
+                        $message = wordwrap($message, 100, "\r\n");
+                        mail($mail, 'NOTIFICATION', $message);
+                    }
             echo "liked inserted";
         }
     } else {
@@ -191,7 +202,7 @@ function passwordupdate2()
                 $user->update(array(
                     'passwd' => hash::make(escape(input::get('passwd_new'))),
                 ));
-                redirect::to('logout.php');
+                echo 'Update successful';
             }
         } else {
             foreach ($validation->errors() as $error) {

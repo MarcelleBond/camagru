@@ -8,13 +8,13 @@
         redirect::to('index.php');
     }
     
-    if (isset($_GET["email"]))
+    if (isset($_GET["tokenreset"]))
     {
-        $_SESSION["forgot"] = $_GET["email"];
+        $_SESSION["forgot"] = $_GET["tokenreset"];
     }
     $mail =  $_SESSION["forgot"] ;
 
-    $db->query("SELECT `user_id` FROM `users` WHERE `email` = ?", array('email' => escape($mail)));
+    $db->query("SELECT `user_id` FROM `users` WHERE `ver_code` = ?", array('ver_code' => escape(input::get('tokenreset'))));
 
 
     if ($db->count() > 0)
@@ -38,7 +38,7 @@
                 {
                     try
                     {
-                        $db->query("UPDATE `users` SET `passwd`=? WHERE `email` = ?", array('passwd' => hash::make(escape(input::get('passwd'))), 'email' => $mail));                    
+                        $db->query("UPDATE `users` SET `passwd`= ?, ver_code = '' WHERE `ver_code` = ?", array('passwd' => hash::make(escape(input::get('passwd'))), 'ver_code' =>  escape($mail)));                    
                         redirect::to('login.php');
                         
                     }

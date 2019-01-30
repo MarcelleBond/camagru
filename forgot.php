@@ -10,10 +10,13 @@
 
     function activeEmail($mail) {
     $message = ' 
-    Click on link below to reset your password:
-    http://localhost:8080/camagru/reset.php?email='.$mail;
-    $message = wordwrap($message, 100, "\r\n");
-    mail( $_POST['email'] , 'Activation link' , $message);
+	Click on link below to reset your password:
+	<a href=http://127.0.0.1:8080/camagru/reset.php?tokenreset='.$mail.'>click here</a>';
+   // http://127.0.0.1:8080/camagru/reset.php?';//tokenreset='.$mail;
+	$message = wordwrap($message, 100, "\r\n");
+	$headers = "MIME-Version: 1.0" . "\r\n";
+$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+    mail( $_POST['email'] , 'Reset link' , $message, $headers);
     echo '<script>alert("Pls check email.")</script>';
     }
 
@@ -31,7 +34,11 @@
                 $db->query("SELECT `user_id` FROM `users` WHERE `email` = ?", array('email' => escape(input::get('email'))));
 				if ($db->count() > 0)
 				{
-                    activeEmail(escape(input::get('email')));
+					$token = "QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm1234567890";
+					$token = str_shuffle($token);
+					$token = substr($token, 0, 10);
+					activeEmail($token);
+					$db->query("UPDATE `users` SET `ver_code` = ? WHERE `email`= ?", array('ver_code' => $token, 'email' => escape(input::get('email'))));
                     redirect::to('logout.php');
 				}
 				else

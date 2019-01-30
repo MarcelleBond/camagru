@@ -11,12 +11,11 @@ function updPass() {
     hr.onreadystatechange = function () {
         if (hr.readyState == 4 && hr.status == 200) {
             var return_data = hr.responseText;
-
+            alert(return_data);
             document.getElementById("passres").innerHTML = return_data;
             document.getElementById("passwd_current").value = "";
             document.getElementById("passwd_new").value = "";
             document.getElementById("passwd_new_again").value = "";
-
         }
     }
     hr.send(vars);

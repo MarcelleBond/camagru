@@ -1,4 +1,4 @@
-var picsPerPage = 4;
+var picsPerPage = 5;
 var offset = 0;
 var numpics = countPics();
 var numPages = Math.ceil(numpics / picsPerPage);
