@@ -4,22 +4,6 @@
 
 > App’s users should be able to select an image in a list of superposable images (for instance a picture frame, or other “we don’t wanna know what you are using this for” objects), take a picture with his/her webcam and admire the result that should be mixing both pictures. All captured images should be public, likeables and commentable. </br>
 
-
-**Badges**
-
-- Build
-- Issues
-- Forks
-- Stars
-- Licence
-
-[![Build Status](http://img.shields.io/travis/badges/badgerbadgerbadger.svg?style=flat-square)](https://travis-ci.org/badges/badgerbadgerbadger)
-<a href="https://github.com/The-only-blue/Camagru/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/The-only-blue/Camagru"></a>
-<a href="https://github.com/The-only-blue/Camagru/network"><img alt="GitHub forks" src="https://img.shields.io/github/forks/The-only-blue/Camagru"></a>
-<a href="https://github.com/The-only-blue/Camagru/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/The-only-blue/Camagru"></a>
-<a href="https://github.com/The-only-blue/Camagru"><img alt="GitHub license" src="https://img.shields.io/github/license/The-only-blue/Camagru"></a>
-
-
 ---
 ## Table of Contents
 
